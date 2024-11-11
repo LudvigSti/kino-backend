@@ -487,7 +487,6 @@ $RECYCLE.BIN/
 /MyBackendAPI/appsettings.Development.json
 /MyBackendAPI/bin/Debug   
 /MyBackendAPI/bin/Release   
-/MyBackendAPI/obj/Debug   
 /MyBackendAPI/obj/Release
 /**/*/appsettings.json
 /MyBackendAPI/obj/Debug*
@@ -509,3 +508,4 @@ $RECYCLE.BIN/
 /MyBackendAPI/obj/MyBackendAPI.csproj.nuget.dgspec.json
 /MyBackendAPI/obj/project.assets.json
 /MyBackendAPI/obj/project.nuget.cache
+/MyBackendAPI/obj/MyBackendAPI.csproj.nuget.g.targets
