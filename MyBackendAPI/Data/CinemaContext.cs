@@ -23,7 +23,16 @@ namespace MyBackendAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<LikedMovies>()
+                .HasKey(lm => new { lm.ProfileId, lm.MovieId });
 
+            modelBuilder.Entity<MovieWithGenre>()
+                .HasKey(mg => new { mg.MovieId, mg.GenreId });
+
+            modelBuilder.Entity<WatchedMovies>()
+                .HasKey(wm => new { wm.ProfileId, wm.MovieId });
+
+            base.OnModelCreating(modelBuilder);
         }
         public DbSet<Movie> Movies { get; set; }
     }

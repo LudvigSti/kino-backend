@@ -5,20 +5,16 @@ namespace MyBackendAPI.Models
 {
     public class MovieWithGenre{
 
-        [Key]
-        public int MWGId { get; set; }
-
         public int MovieId { get; set; }
         [ForeignKey("MovieId")]
         public Movie Movie { get; set; }
-        
-        public string GenreId { get; set; }
+
+        public int GenreId { get; set; }
         [ForeignKey("GenreId")]
         public Genre Genre { get; set; }
 
-        public MovieWithGenre(int mwgId, int movieId, string genreId)
+        public MovieWithGenre(int movieId, int genreId)
         {
-            MWGId = mwgId;
             MovieId = movieId;
             GenreId = genreId;
         }
