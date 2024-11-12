@@ -1,0 +1,40 @@
+name: .NET Core CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Set up .NET SDK
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0'  # Specify the .NET version
+
+      # Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore KinoBackend.sln
+
+      # Build the project
+      - name: Build
+        run: dotnet build KinoBackend.sln --configuration Release
+
+      # Run tests
+      - name: Run tests
+        run: dotnet test KinoBackend.sln --configuration Release
+
+      # Optionally, publish the project (for deployment)
+      - name: Publish
+        run: dotnet publish MyBackendAPI/MyBackendAPI.csproj --configuration Release --output ./publish
