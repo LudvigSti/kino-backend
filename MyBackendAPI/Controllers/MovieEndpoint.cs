@@ -18,6 +18,8 @@ namespace api_cinema_challenge.EndPoints
             var movies = await repository.GetMovies();
             return TypedResults.Ok(movies);
         }
+
+
     }
 
 }
