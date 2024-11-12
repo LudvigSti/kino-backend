@@ -486,3 +486,30 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+/MyBackendAPI/appsettings.json
+/MyBackendAPI/appsettings.Development.json
+/MyBackendAPI/bin/Debug   
+/MyBackendAPI/bin/Release   
+/MyBackendAPI/obj/Release
+/**/*/appsettings.json
+/MyBackendAPI/obj/Debug*
+/MyBackendAPI/obj/Debug/net8.0/refint/MyBackendAPI.dll
+/MyBackendAPI/bin/Debug/net8.0/appsettings.json
+/MyBackendAPI/bin/Debug/net8.0/MyBackendAPI.dll
+/MyBackendAPI/bin/Debug/net8.0/MyBackendAPI.exe
+/MyBackendAPI/bin/Debug/net8.0/MyBackendAPI.pdb
+/MyBackendAPI/obj/Debug/net8.0/apphost.exe
+/MyBackendAPI/obj/Debug/net8.0/MyBackendAPI.assets.cache
+/MyBackendAPI/obj/Debug/net8.0/MyBackendAPI.csproj.CoreCompileInputs.cache
+/MyBackendAPI/obj/Debug/net8.0/MyBackendAPI.csproj.FileListAbsolute.txt
+/MyBackendAPI/obj/Debug/net8.0/MyBackendAPI.dll
+/MyBackendAPI/obj/Debug/net8.0/MyBackendAPI.genruntimeconfig.cache
+/MyBackendAPI/obj/Debug/net8.0/MyBackendAPI.MvcApplicationPartsAssemblyInfo.cs
+/MyBackendAPI/obj/Debug/net8.0/MyBackendAPI.pdb
+/MyBackendAPI/obj/Debug/net8.0/MyBackendAPI.sourcelink.json
+/MyBackendAPI/obj/MyBackendAPI.csproj.nuget.g.props
+/MyBackendAPI/obj/MyBackendAPI.csproj.nuget.dgspec.json
+/MyBackendAPI/obj/project.assets.json
+/MyBackendAPI/obj/project.nuget.cache
+/MyBackendAPI/obj/MyBackendAPI.csproj.nuget.g.targets
