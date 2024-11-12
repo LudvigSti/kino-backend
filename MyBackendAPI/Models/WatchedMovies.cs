@@ -6,20 +6,16 @@ namespace MyBackendAPI.Models
 {
     public class WatchedMovies
     {
-        [Key]
-        public int WatchedMoviesId { get; set; }
-
         public int ProfileId { get; set; }
-        [ForeignKey("Profile")]
+        [ForeignKey("ProfileId")]
         public Profile Profile { get; set; }
 
         public int MovieId { get; set; }
-        [ForeignKey("Movie")]
+        [ForeignKey("MovieId")]
         public Movie Movie { get; set; }
 
-        public WatchedMovies(int watchedMoviesId, int profileId, int movieId)
+        public WatchedMovies(int profileId, int movieId)
         {
-            WatchedMoviesId = watchedMoviesId;
             ProfileId = profileId;
             MovieId = movieId;
         }
