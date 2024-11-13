@@ -9,8 +9,8 @@ namespace MyBackendAPI.Models
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public ICollection<Profile> Profile { get; set; }
-        public ICollection<Order> Order { get; set; }
+        public ICollection<Profile> Profile { get; set; } = new List<Profile>();
+        public ICollection<Order> Order { get; set; } = new List<Order>();
 
         public User(string email, string password)
         {
