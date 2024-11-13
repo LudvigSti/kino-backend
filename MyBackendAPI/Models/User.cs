@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace MyBackendAPI.Models
 {
@@ -9,7 +10,9 @@ namespace MyBackendAPI.Models
         public string Email { get; set; }
         public string Password { get; set; }
 
+        [JsonIgnore]
         public ICollection<Profile> Profile { get; set; } = new List<Profile>();
+        [JsonIgnore]
         public ICollection<Order> Order { get; set; } = new List<Order>();
 
         public User(string email, string password)
