@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace MyBackendAPI.Models
 {
@@ -10,16 +11,23 @@ namespace MyBackendAPI.Models
         public int Rating { get; set; }
         public int AgeRating { get; set; }
         public int Duration { get; set; }
-        public int ReleaseYear { get; set; }
+        public DateTime ReleaseYear { get; set; }
         public string Director { get; set; }
         public string Image { get; set; }
 
-        public ICollection<MovieWithGenre> MovieWithGenres { get; set; }
-        public ICollection<LikedMovies> LikedMovies { get; set; }
-        public ICollection<WatchedMovies> WatchedMovies { get; set; }
-        public ICollection<Screening> Screenings { get; set; }
+        //TODO:
+        //Make DTO's for theese
+        [JsonIgnore]
+        public ICollection<MovieWithGenre> MovieWithGenres { get; set; } = new List<MovieWithGenre>();
+        [JsonIgnore]
+        public ICollection<LikedMovies> LikedMovies { get; set; } = new List<LikedMovies>();
+        [JsonIgnore]
+        public ICollection<WatchedMovies> WatchedMovies { get; set; } = new List<WatchedMovies>();
+        [JsonIgnore]
+        public ICollection<Screening> Screenings { get; set; } = new List<Screening>();
+        
 
-        public Movie (int movieId, string title, int rating, int ageRating, int duration, int releaseYear, string director, string image)
+        public Movie (int movieId, string title, int rating, int ageRating, int duration, DateTime releaseYear, string director, string image)
         {
             MovieId = movieId;
             Title = title;

@@ -513,3 +513,7 @@ $RECYCLE.BIN/
 /MyBackendAPI/obj/project.assets.json
 /MyBackendAPI/obj/project.nuget.cache
 /MyBackendAPI/obj/MyBackendAPI.csproj.nuget.g.targets
+/MyBackendAPI/obj/Debug/net8.0/MyBackendAPI.GeneratedMSBuildEditorConfig.editorconfig
+/MyBackendAPI/obj/Debug/net8.0/MyBackendAPI.assets.cache
+/MyBackendAPI/obj/Debug/net8.0/MyBackendAPI.AssemblyInfoInputs.cache
+/MyBackendAPI/obj/Debug/net8.0/MyBackendAPI.AssemblyInfo.cs
