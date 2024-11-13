@@ -23,6 +23,10 @@ namespace MyBackendAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            Seeder seeder = new Seeder();
+            modelBuilder.Entity<Movie>().HasData(seeder.MovieList);
+            modelBuilder.Entity<User>().HasData(seeder.UserList);
+            
             modelBuilder.Entity<LikedMovies>()
                 .HasKey(lm => new { lm.ProfileId, lm.MovieId });
 
@@ -31,9 +35,9 @@ namespace MyBackendAPI.Data
 
             modelBuilder.Entity<WatchedMovies>()
                 .HasKey(wm => new { wm.ProfileId, wm.MovieId });
-
-            base.OnModelCreating(modelBuilder);
+            
         }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
