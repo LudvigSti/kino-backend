@@ -25,8 +25,8 @@ namespace MyBackendAPI.Models
         public ICollection<WatchedMovies> WatchedMovies { get; set; } = new List<WatchedMovies>();
         [JsonIgnore]
         public ICollection<Screening> Screenings { get; set; } = new List<Screening>();
-        
 
+        public Movie() { }
         public Movie (int movieId, string title, int rating, int ageRating, int duration, DateTime releaseYear, string director, string image)
         {
             MovieId = movieId;

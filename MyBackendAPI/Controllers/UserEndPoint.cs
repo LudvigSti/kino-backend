@@ -13,7 +13,7 @@ namespace MyBackendAPI.Controllers
             group.MapGet("/{id:int}", GetUser);
             group.MapGet("/", GetAllUsers);
             group.MapPost("/", CreateUser);
-            group.MapDelete("/", DeleteUser);
+            group.MapDelete("/{id:int}", DeleteUser);
             group.MapPut("/{id:int}", UpdateUser);
         }
 
