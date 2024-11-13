@@ -1,4 +1,5 @@
 using api_cinema_challenge.EndPoints;
+using MyBackendAPI.Controllers;
 using MyBackendAPI.Data;
 using MyBackendAPI.Repositories;
 
@@ -8,6 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CinemaContext>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddControllers();
 
 var app = builder.Build();
@@ -24,5 +26,6 @@ if (app.Environment.IsDevelopment())
 
 
 app.configureMovieEndpoint();
+app.configureUserEndpoint();
 app.UseHttpsRedirection(); // Only enable HTTPS redirection in production
 app.Run();
