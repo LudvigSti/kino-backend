@@ -5,6 +5,7 @@ namespace MyBackendAPI.Data
     public class Seeder
     {
         private List<Movie> _movies = new List<Movie>();
+        private List<User> _users = new List<User>();
 
         public Seeder()
         {
@@ -17,9 +18,17 @@ namespace MyBackendAPI.Data
             _movies.Add(movie2);
             _movies.Add(movie3);
 
-            Console.WriteLine(MovieList);
+            //Users
+            User user1 = new User("example@gmail.com", "Puppy123");
+            user1.UserId = 1;
+            User user2 = new User("email@email.com", "ILoveMom9999");
+            user2.UserId = 2;
+
+            _users.Add(user1);
+            _users.Add(user2);
         }
 
         public List<Movie> MovieList { get { return _movies; } }
+        public List<User> UserList { get { return _users;  } }
     }
 }

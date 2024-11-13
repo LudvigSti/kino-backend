@@ -25,7 +25,7 @@ namespace MyBackendAPI.Data
         {
             Seeder seeder = new Seeder();
             modelBuilder.Entity<Movie>().HasData(seeder.MovieList);
-
+            modelBuilder.Entity<User>().HasData(seeder.UserList);
             
             modelBuilder.Entity<LikedMovies>()
                 .HasKey(lm => new { lm.ProfileId, lm.MovieId });
@@ -38,5 +38,6 @@ namespace MyBackendAPI.Data
             
         }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

@@ -61,7 +61,7 @@ namespace MyBackendAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
                     UserId = table.Column<int>(type: "integer", nullable: false)
@@ -71,7 +71,7 @@ namespace MyBackendAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.UserId);
+                    table.PrimaryKey("PK_Users", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
@@ -139,9 +139,9 @@ namespace MyBackendAPI.Migrations
                 {
                     table.PrimaryKey("PK_Order", x => x.OrderId);
                     table.ForeignKey(
-                        name: "FK_Order_User_UserId",
+                        name: "FK_Order_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -163,9 +163,9 @@ namespace MyBackendAPI.Migrations
                 {
                     table.PrimaryKey("PK_Profile", x => x.ProfileId);
                     table.ForeignKey(
-                        name: "FK_Profile_User_UserId",
+                        name: "FK_Profile_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -250,9 +250,18 @@ namespace MyBackendAPI.Migrations
                 columns: new[] { "MovieId", "AgeRating", "Director", "Duration", "Image", "Rating", "ReleaseYear", "Title" },
                 values: new object[,]
                 {
-                    { 1, 16, "adc", 100, "testimage", 10, new DateTime(2024, 11, 13, 7, 23, 37, 187, DateTimeKind.Utc).AddTicks(5356), "Scary" },
-                    { 2, 16, "adc", 100, "testimage", 10, new DateTime(2024, 11, 13, 7, 23, 37, 187, DateTimeKind.Utc).AddTicks(5363), "Scary" },
-                    { 3, 16, "adc", 100, "testimage", 10, new DateTime(2024, 11, 13, 7, 23, 37, 187, DateTimeKind.Utc).AddTicks(5365), "Scary" }
+                    { 1, 16, "Bent Bernoft", 100, "testimage", 10, new DateTime(2024, 11, 13, 8, 2, 52, 117, DateTimeKind.Utc).AddTicks(6310), "Scary Movie" },
+                    { 2, 16, "Billy Bill", 100, "testimage", 10, new DateTime(2024, 11, 13, 8, 2, 52, 117, DateTimeKind.Utc).AddTicks(6319), "Star Wars" },
+                    { 3, 16, "Anders Andersen", 100, "testimage", 10, new DateTime(2024, 11, 13, 8, 2, 52, 117, DateTimeKind.Utc).AddTicks(6321), "Pew Pew Pew" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "UserId", "Email", "Password" },
+                values: new object[,]
+                {
+                    { 1, "example@gmail.com", "Puppy123" },
+                    { 2, "email@email.com", "ILoveMom9999" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -335,7 +344,7 @@ namespace MyBackendAPI.Migrations
                 name: "Movies");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
         }
     }
 }

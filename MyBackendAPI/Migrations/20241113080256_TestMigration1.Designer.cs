@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyBackendAPI.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20241113072341_TestMigration1")]
+    [Migration("20241113080256_TestMigration1")]
     partial class TestMigration1
     {
         /// <inheritdoc />
@@ -118,34 +118,34 @@ namespace MyBackendAPI.Migrations
                         {
                             MovieId = 1,
                             AgeRating = 16,
-                            Director = "adc",
+                            Director = "Bent Bernoft",
                             Duration = 100,
                             Image = "testimage",
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 13, 7, 23, 37, 187, DateTimeKind.Utc).AddTicks(5356),
-                            Title = "Scary"
+                            ReleaseYear = new DateTime(2024, 11, 13, 8, 2, 52, 117, DateTimeKind.Utc).AddTicks(6310),
+                            Title = "Scary Movie"
                         },
                         new
                         {
                             MovieId = 2,
                             AgeRating = 16,
-                            Director = "adc",
+                            Director = "Billy Bill",
                             Duration = 100,
                             Image = "testimage",
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 13, 7, 23, 37, 187, DateTimeKind.Utc).AddTicks(5363),
-                            Title = "Scary"
+                            ReleaseYear = new DateTime(2024, 11, 13, 8, 2, 52, 117, DateTimeKind.Utc).AddTicks(6319),
+                            Title = "Star Wars"
                         },
                         new
                         {
                             MovieId = 3,
                             AgeRating = 16,
-                            Director = "adc",
+                            Director = "Anders Andersen",
                             Duration = 100,
                             Image = "testimage",
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 13, 7, 23, 37, 187, DateTimeKind.Utc).AddTicks(5365),
-                            Title = "Scary"
+                            ReleaseYear = new DateTime(2024, 11, 13, 8, 2, 52, 117, DateTimeKind.Utc).AddTicks(6321),
+                            Title = "Pew Pew Pew"
                         });
                 });
 
@@ -294,7 +294,21 @@ namespace MyBackendAPI.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            Email = "example@gmail.com",
+                            Password = "Puppy123"
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            Email = "email@email.com",
+                            Password = "ILoveMom9999"
+                        });
                 });
 
             modelBuilder.Entity("MyBackendAPI.Models.WatchedMovies", b =>
