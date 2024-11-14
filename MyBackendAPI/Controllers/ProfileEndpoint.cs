@@ -16,7 +16,8 @@ namespace MyBackendAPI.Controllers
             group.MapPost("/", CreateProfile);
             group.MapDelete("/{id:int}", DeleteProfile);
             group.MapPut("/{id:int}", UpdateProfile);
-            group.MapPost("/createUserProfile", CreateUserAndProfile); // Add this line
+            group.MapPost("/createUserProfile", CreateUserAndProfile);
+            group.MapPost("/getProfileByUserId", GetProfileByUserId);
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -36,6 +37,26 @@ namespace MyBackendAPI.Controllers
                 return TypedResults.NotFound("Profile does not exist");
             }
             return TypedResults.Ok(profile);
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public static async Task<IResult> GetProfileByUserId(IProfileRepository repository, int userId)
+        {
+            try
+            {
+                var profile = await repository.GetProfileByUserId(userId);
+                if (profile == null)
+                {
+                    return TypedResults.NotFound("Profile does not exist for the given UserId");
+                }
+                return TypedResults.Ok(profile);
+            }
+            catch (Exception e)
+            {
+                return TypedResults.BadRequest(e.Message);
+            }
         }
 
         [ProducesResponseType(StatusCodes.Status201Created)]

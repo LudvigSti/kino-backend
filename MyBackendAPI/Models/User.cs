@@ -14,7 +14,8 @@ namespace MyBackendAPI.Models
         public string Password { get; set; }
 
         [JsonIgnore]
-        public ICollection<Profile> Profile { get; set; } = new List<Profile>();
+        public Profile Profile { get; set; }
+
         [JsonIgnore]
         public ICollection<Order> Order { get; set; } = new List<Order>();
 

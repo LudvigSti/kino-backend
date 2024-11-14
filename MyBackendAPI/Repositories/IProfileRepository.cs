@@ -5,6 +5,7 @@ namespace MyBackendAPI.Repositories
     public interface IProfileRepository
     {
         Task<ICollection<Profile>> GetProfiles();
+        Task<Profile> GetProfileByUserId(int userId);
         Task<Profile> CreateProfile(Profile profile);
         Task<Profile?> GetProfile(int id);
         Task<Profile?> DeleteProfile(int id);
