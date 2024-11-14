@@ -1,7 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyBackendAPI.Models
 {
+    [Table("CinemaHall")]
     public class CinemaHall
     {
         [Key]

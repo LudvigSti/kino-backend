@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyBackendAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class TestMigration1 : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -42,7 +42,7 @@ namespace MyBackendAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Movies",
+                name: "Movie",
                 columns: table => new
                 {
                     MovieId = table.Column<int>(type: "integer", nullable: false)
@@ -57,11 +57,11 @@ namespace MyBackendAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Movies", x => x.MovieId);
+                    table.PrimaryKey("PK_Movie", x => x.MovieId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "User",
                 columns: table => new
                 {
                     UserId = table.Column<int>(type: "integer", nullable: false)
@@ -71,7 +71,7 @@ namespace MyBackendAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.UserId);
+                    table.PrimaryKey("PK_User", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
@@ -91,9 +91,9 @@ namespace MyBackendAPI.Migrations
                         principalColumn: "GenreId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MovieWithGenre_Movies_MovieId",
+                        name: "FK_MovieWithGenre_Movie_MovieId",
                         column: x => x.MovieId,
-                        principalTable: "Movies",
+                        principalTable: "Movie",
                         principalColumn: "MovieId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -118,9 +118,9 @@ namespace MyBackendAPI.Migrations
                         principalColumn: "HallId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Screening_Movies_MovieId",
+                        name: "FK_Screening_Movie_MovieId",
                         column: x => x.MovieId,
-                        principalTable: "Movies",
+                        principalTable: "Movie",
                         principalColumn: "MovieId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -139,9 +139,9 @@ namespace MyBackendAPI.Migrations
                 {
                     table.PrimaryKey("PK_Order", x => x.OrderId);
                     table.ForeignKey(
-                        name: "FK_Order_Users_UserId",
+                        name: "FK_Order_User_UserId",
                         column: x => x.UserId,
-                        principalTable: "Users",
+                        principalTable: "User",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -155,7 +155,7 @@ namespace MyBackendAPI.Migrations
                     FirstName = table.Column<string>(type: "text", nullable: false),
                     LastName = table.Column<string>(type: "text", nullable: false),
                     UserId = table.Column<int>(type: "integer", nullable: false),
-                    DateOfBirth = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DateOfBirth = table.Column<DateOnly>(type: "date", nullable: false),
                     Icon = table.Column<string>(type: "text", nullable: false),
                     Points = table.Column<int>(type: "integer", nullable: false)
                 },
@@ -163,9 +163,9 @@ namespace MyBackendAPI.Migrations
                 {
                     table.PrimaryKey("PK_Profile", x => x.ProfileId);
                     table.ForeignKey(
-                        name: "FK_Profile_Users_UserId",
+                        name: "FK_Profile_User_UserId",
                         column: x => x.UserId,
-                        principalTable: "Users",
+                        principalTable: "User",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -198,7 +198,7 @@ namespace MyBackendAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LikedMovies",
+                name: "LikedMovie",
                 columns: table => new
                 {
                     ProfileId = table.Column<int>(type: "integer", nullable: false),
@@ -206,15 +206,15 @@ namespace MyBackendAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LikedMovies", x => new { x.ProfileId, x.MovieId });
+                    table.PrimaryKey("PK_LikedMovie", x => new { x.ProfileId, x.MovieId });
                     table.ForeignKey(
-                        name: "FK_LikedMovies_Movies_MovieId",
+                        name: "FK_LikedMovie_Movie_MovieId",
                         column: x => x.MovieId,
-                        principalTable: "Movies",
+                        principalTable: "Movie",
                         principalColumn: "MovieId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LikedMovies_Profile_ProfileId",
+                        name: "FK_LikedMovie_Profile_ProfileId",
                         column: x => x.ProfileId,
                         principalTable: "Profile",
                         principalColumn: "ProfileId",
@@ -222,7 +222,7 @@ namespace MyBackendAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "WatchedMovies",
+                name: "WatchedMovie",
                 columns: table => new
                 {
                     ProfileId = table.Column<int>(type: "integer", nullable: false),
@@ -230,15 +230,15 @@ namespace MyBackendAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WatchedMovies", x => new { x.ProfileId, x.MovieId });
+                    table.PrimaryKey("PK_WatchedMovie", x => new { x.ProfileId, x.MovieId });
                     table.ForeignKey(
-                        name: "FK_WatchedMovies_Movies_MovieId",
+                        name: "FK_WatchedMovie_Movie_MovieId",
                         column: x => x.MovieId,
-                        principalTable: "Movies",
+                        principalTable: "Movie",
                         principalColumn: "MovieId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_WatchedMovies_Profile_ProfileId",
+                        name: "FK_WatchedMovie_Profile_ProfileId",
                         column: x => x.ProfileId,
                         principalTable: "Profile",
                         principalColumn: "ProfileId",
@@ -246,17 +246,17 @@ namespace MyBackendAPI.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Movies",
+                table: "Movie",
                 columns: new[] { "MovieId", "AgeRating", "Director", "Duration", "Image", "Rating", "ReleaseYear", "Title" },
                 values: new object[,]
                 {
-                    { 1, 16, "Bent Bernoft", 100, "testimage", 10, new DateTime(2024, 11, 13, 8, 2, 52, 117, DateTimeKind.Utc).AddTicks(6310), "Scary Movie" },
-                    { 2, 16, "Billy Bill", 100, "testimage", 10, new DateTime(2024, 11, 13, 8, 2, 52, 117, DateTimeKind.Utc).AddTicks(6319), "Star Wars" },
-                    { 3, 16, "Anders Andersen", 100, "testimage", 10, new DateTime(2024, 11, 13, 8, 2, 52, 117, DateTimeKind.Utc).AddTicks(6321), "Pew Pew Pew" }
+                    { 1, 16, "Bent Bernoft", 100, "testimage", 10, new DateTime(2024, 11, 14, 12, 29, 6, 0, DateTimeKind.Utc).AddTicks(9356), "Scary Movie" },
+                    { 2, 16, "Billy Bill", 100, "testimage", 10, new DateTime(2024, 11, 14, 12, 29, 6, 0, DateTimeKind.Utc).AddTicks(9378), "Star Wars" },
+                    { 3, 16, "Anders Andersen", 100, "testimage", 10, new DateTime(2024, 11, 14, 12, 29, 6, 0, DateTimeKind.Utc).AddTicks(9381), "Pew Pew Pew" }
                 });
 
             migrationBuilder.InsertData(
-                table: "Users",
+                table: "User",
                 columns: new[] { "UserId", "Email", "Password" },
                 values: new object[,]
                 {
@@ -265,8 +265,8 @@ namespace MyBackendAPI.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_LikedMovies_MovieId",
-                table: "LikedMovies",
+                name: "IX_LikedMovie_MovieId",
+                table: "LikedMovie",
                 column: "MovieId");
 
             migrationBuilder.CreateIndex(
@@ -305,8 +305,8 @@ namespace MyBackendAPI.Migrations
                 column: "ScreeningId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WatchedMovies_MovieId",
-                table: "WatchedMovies",
+                name: "IX_WatchedMovie_MovieId",
+                table: "WatchedMovie",
                 column: "MovieId");
         }
 
@@ -314,7 +314,7 @@ namespace MyBackendAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "LikedMovies");
+                name: "LikedMovie");
 
             migrationBuilder.DropTable(
                 name: "MovieWithGenre");
@@ -323,7 +323,7 @@ namespace MyBackendAPI.Migrations
                 name: "Ticket");
 
             migrationBuilder.DropTable(
-                name: "WatchedMovies");
+                name: "WatchedMovie");
 
             migrationBuilder.DropTable(
                 name: "Genre");
@@ -341,10 +341,10 @@ namespace MyBackendAPI.Migrations
                 name: "CinemaHall");
 
             migrationBuilder.DropTable(
-                name: "Movies");
+                name: "Movie");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "User");
         }
     }
 }

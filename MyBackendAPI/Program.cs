@@ -10,6 +10,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CinemaContext>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddControllers();
 
 var app = builder.Build();
@@ -27,5 +28,6 @@ if (app.Environment.IsDevelopment())
 
 app.configureMovieEndpoint();
 app.configureUserEndpoint();
+app.configureProfileEndpoint();
 app.UseHttpsRedirection(); // Only enable HTTPS redirection in production
 app.Run();

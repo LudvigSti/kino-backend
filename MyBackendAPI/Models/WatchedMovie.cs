@@ -4,7 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyBackendAPI.Models
 {
-    public class WatchedMovies
+    [Table("WatchedMovie")]
+    public class WatchedMovie
     {
         public int ProfileId { get; set; }
         [ForeignKey("ProfileId")]
@@ -14,7 +15,7 @@ namespace MyBackendAPI.Models
         [ForeignKey("MovieId")]
         public Movie Movie { get; set; }
 
-        public WatchedMovies(int profileId, int movieId)
+        public WatchedMovie(int profileId, int movieId)
         {
             ProfileId = profileId;
             MovieId = movieId;

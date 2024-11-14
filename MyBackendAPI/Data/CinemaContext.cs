@@ -27,17 +27,18 @@ namespace MyBackendAPI.Data
             modelBuilder.Entity<Movie>().HasData(seeder.MovieList);
             modelBuilder.Entity<User>().HasData(seeder.UserList);
             
-            modelBuilder.Entity<LikedMovies>()
+            modelBuilder.Entity<LikedMovie>()
                 .HasKey(lm => new { lm.ProfileId, lm.MovieId });
 
             modelBuilder.Entity<MovieWithGenre>()
                 .HasKey(mg => new { mg.MovieId, mg.GenreId });
 
-            modelBuilder.Entity<WatchedMovies>()
+            modelBuilder.Entity<WatchedMovie>()
                 .HasKey(wm => new { wm.ProfileId, wm.MovieId });
             
         }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
     }
 }
