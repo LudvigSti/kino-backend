@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyBackendAPI.Models
 {
+    [Table("Screening")]
     public class Screening
     {
         [Key]

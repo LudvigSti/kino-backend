@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyBackendAPI.Models
 {
+    [Table("Ticket")]
     public class Ticket
     {
         [Key]

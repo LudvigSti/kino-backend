@@ -1,8 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace MyBackendAPI.Models
 {
+    [Table("Movie")]
     public class Movie
     {
         [Key]
@@ -20,9 +22,9 @@ namespace MyBackendAPI.Models
         [JsonIgnore]
         public ICollection<MovieWithGenre> MovieWithGenres { get; set; } = new List<MovieWithGenre>();
         [JsonIgnore]
-        public ICollection<LikedMovies> LikedMovies { get; set; } = new List<LikedMovies>();
+        public ICollection<LikedMovie> LikedMovie { get; set; } = new List<LikedMovie>();
         [JsonIgnore]
-        public ICollection<WatchedMovies> WatchedMovies { get; set; } = new List<WatchedMovies>();
+        public ICollection<WatchedMovie> WatchedMovie { get; set; } = new List<WatchedMovie>();
         [JsonIgnore]
         public ICollection<Screening> Screenings { get; set; } = new List<Screening>();
 

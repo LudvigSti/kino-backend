@@ -59,7 +59,7 @@ namespace MyBackendAPI.Migrations
                     b.ToTable("Genre");
                 });
 
-            modelBuilder.Entity("MyBackendAPI.Models.LikedMovies", b =>
+            modelBuilder.Entity("MyBackendAPI.Models.LikedMovie", b =>
                 {
                     b.Property<int>("ProfileId")
                         .HasColumnType("integer");
@@ -71,7 +71,7 @@ namespace MyBackendAPI.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("LikedMovies");
+                    b.ToTable("LikedMovie");
                 });
 
             modelBuilder.Entity("MyBackendAPI.Models.Movie", b =>
@@ -108,7 +108,7 @@ namespace MyBackendAPI.Migrations
 
                     b.HasKey("MovieId");
 
-                    b.ToTable("Movies");
+                    b.ToTable("Movie");
 
                     b.HasData(
                         new
@@ -119,7 +119,7 @@ namespace MyBackendAPI.Migrations
                             Duration = 100,
                             Image = "testimage",
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 13, 8, 2, 52, 117, DateTimeKind.Utc).AddTicks(6310),
+                            ReleaseYear = new DateTime(2024, 11, 14, 12, 29, 6, 0, DateTimeKind.Utc).AddTicks(9356),
                             Title = "Scary Movie"
                         },
                         new
@@ -130,7 +130,7 @@ namespace MyBackendAPI.Migrations
                             Duration = 100,
                             Image = "testimage",
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 13, 8, 2, 52, 117, DateTimeKind.Utc).AddTicks(6319),
+                            ReleaseYear = new DateTime(2024, 11, 14, 12, 29, 6, 0, DateTimeKind.Utc).AddTicks(9378),
                             Title = "Star Wars"
                         },
                         new
@@ -141,7 +141,7 @@ namespace MyBackendAPI.Migrations
                             Duration = 100,
                             Image = "testimage",
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 13, 8, 2, 52, 117, DateTimeKind.Utc).AddTicks(6321),
+                            ReleaseYear = new DateTime(2024, 11, 14, 12, 29, 6, 0, DateTimeKind.Utc).AddTicks(9381),
                             Title = "Pew Pew Pew"
                         });
                 });
@@ -193,8 +193,8 @@ namespace MyBackendAPI.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ProfileId"));
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateOnly>("DateOfBirth")
+                        .HasColumnType("date");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -291,7 +291,7 @@ namespace MyBackendAPI.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
 
                     b.HasData(
                         new
@@ -308,7 +308,7 @@ namespace MyBackendAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MyBackendAPI.Models.WatchedMovies", b =>
+            modelBuilder.Entity("MyBackendAPI.Models.WatchedMovie", b =>
                 {
                     b.Property<int>("ProfileId")
                         .HasColumnType("integer");
@@ -320,19 +320,19 @@ namespace MyBackendAPI.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("WatchedMovies");
+                    b.ToTable("WatchedMovie");
                 });
 
-            modelBuilder.Entity("MyBackendAPI.Models.LikedMovies", b =>
+            modelBuilder.Entity("MyBackendAPI.Models.LikedMovie", b =>
                 {
                     b.HasOne("MyBackendAPI.Models.Movie", "Movie")
-                        .WithMany("LikedMovies")
+                        .WithMany("LikedMovie")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MyBackendAPI.Models.Profile", "Profile")
-                        .WithMany("LikedMovies")
+                        .WithMany("LikedMovie")
                         .HasForeignKey("ProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -421,16 +421,16 @@ namespace MyBackendAPI.Migrations
                     b.Navigation("Screening");
                 });
 
-            modelBuilder.Entity("MyBackendAPI.Models.WatchedMovies", b =>
+            modelBuilder.Entity("MyBackendAPI.Models.WatchedMovie", b =>
                 {
                     b.HasOne("MyBackendAPI.Models.Movie", "Movie")
-                        .WithMany("WatchedMovies")
+                        .WithMany("WatchedMovie")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MyBackendAPI.Models.Profile", "Profile")
-                        .WithMany("WatchedMovies")
+                        .WithMany("WatchedMovie")
                         .HasForeignKey("ProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -452,13 +452,13 @@ namespace MyBackendAPI.Migrations
 
             modelBuilder.Entity("MyBackendAPI.Models.Movie", b =>
                 {
-                    b.Navigation("LikedMovies");
+                    b.Navigation("LikedMovie");
 
                     b.Navigation("MovieWithGenres");
 
                     b.Navigation("Screenings");
 
-                    b.Navigation("WatchedMovies");
+                    b.Navigation("WatchedMovie");
                 });
 
             modelBuilder.Entity("MyBackendAPI.Models.Order", b =>
@@ -468,9 +468,9 @@ namespace MyBackendAPI.Migrations
 
             modelBuilder.Entity("MyBackendAPI.Models.Profile", b =>
                 {
-                    b.Navigation("LikedMovies");
+                    b.Navigation("LikedMovie");
 
-                    b.Navigation("WatchedMovies");
+                    b.Navigation("WatchedMovie");
                 });
 
             modelBuilder.Entity("MyBackendAPI.Models.User", b =>

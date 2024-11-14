@@ -1,27 +1,33 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MyBackendAPI.Models
 {
+    [Table("Profile")]
     public class Profile
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProfileId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int UserId { get; set; }
         [ForeignKey("UserId")]
         public User User { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateOnly DateOfBirth { get; set; }
         public string Icon { get; set; }
         public int Points { get; set; }
 
-        public ICollection<LikedMovies> LikedMovies { get; set; }
-        public ICollection<WatchedMovies> WatchedMovies { get; set; }
+        [JsonIgnore]
+        public ICollection<LikedMovie> LikedMovie { get; set; }
+        [JsonIgnore]
+        public ICollection<WatchedMovie> WatchedMovie { get; set; }
 
-        public Profile(int profileId, string firstName, string lastName, int userId, DateTime dateOfBirth, string icon, int points)
+        public Profile() { }
+
+        public Profile(string firstName, string lastName, int userId, DateOnly dateOfBirth, string icon, int points)
         {
-            ProfileId = profileId;
             FirstName = firstName;
             LastName = lastName;
             UserId = userId;

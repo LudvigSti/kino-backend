@@ -6,6 +6,7 @@ namespace MyBackendAPI.Data
     {
         private List<Movie> _movies = new List<Movie>();
         private List<User> _users = new List<User>();
+        private List<Profile> _profiles = new List<Profile>();
 
         public Seeder()
         {
@@ -26,9 +27,17 @@ namespace MyBackendAPI.Data
 
             _users.Add(user1);
             _users.Add(user2);
+
+            //Profiles
+            Profile profile1 = new Profile("John", "Doe", 1, new DateOnly(1990, 1, 1), "icon", 0);
+            profile1.ProfileId = 1;
+            Profile profile2 = new Profile("Jane", "Doe", 2, new DateOnly(1990, 1, 1), "icon", 0);
+            profile2.ProfileId = 2;
+
         }
 
         public List<Movie> MovieList { get { return _movies; } }
         public List<User> UserList { get { return _users;  } }
+        public List<Profile> ProfileList { get { return _profiles;  } }
     }
 }
