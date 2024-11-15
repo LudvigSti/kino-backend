@@ -118,25 +118,25 @@ namespace MyBackendAPI.Controllers
 
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public static async Task<IResult> CreateUserAndProfile(IUserRepository userRepository, IProfileRepository profileRepository, string email, string password, string firstName, string lastName, DateOnly dateOfBirth)
+        public static async Task<IResult> CreateUserAndProfile(IUserRepository userRepository, IProfileRepository profileRepository, CreateUserProfileDto model)
         {
             try
             {
                 // Create User
                 User userCreated = new User
                 {
-                    Email = email,
-                    Password = password
+                    Email = model.Email,
+                    Password = model.Password
                 };
                 await userRepository.CreateUser(userCreated);
 
                 // Create Profile
                 Profile profileCreated = new Profile
                 {
-                    FirstName = firstName,
-                    LastName = lastName,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
                     UserId = userCreated.UserId,
-                    DateOfBirth = dateOfBirth,
+                    DateOfBirth = model.DateOfBirth,
                     Icon = "default.png",
                     Points = 0
                 };
