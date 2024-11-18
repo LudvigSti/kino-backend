@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyBackendAPI.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20241114122907_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241118135136_IMig")]
+    partial class IMig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -120,9 +120,9 @@ namespace MyBackendAPI.Migrations
                             AgeRating = 16,
                             Director = "Bent Bernoft",
                             Duration = 100,
-                            Image = "testimage",
+                            Image = "https://www.imdb.com/title/tt0175142/mediaviewer/rm3954579456/?ref_=tt_ov_i",
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 14, 12, 29, 6, 0, DateTimeKind.Utc).AddTicks(9356),
+                            ReleaseYear = new DateTime(2024, 11, 18, 13, 51, 35, 555, DateTimeKind.Utc).AddTicks(3221),
                             Title = "Scary Movie"
                         },
                         new
@@ -133,7 +133,7 @@ namespace MyBackendAPI.Migrations
                             Duration = 100,
                             Image = "testimage",
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 14, 12, 29, 6, 0, DateTimeKind.Utc).AddTicks(9378),
+                            ReleaseYear = new DateTime(2024, 11, 18, 13, 51, 35, 555, DateTimeKind.Utc).AddTicks(3230),
                             Title = "Star Wars"
                         },
                         new
@@ -144,7 +144,7 @@ namespace MyBackendAPI.Migrations
                             Duration = 100,
                             Image = "testimage",
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 14, 12, 29, 6, 0, DateTimeKind.Utc).AddTicks(9381),
+                            ReleaseYear = new DateTime(2024, 11, 18, 13, 51, 35, 555, DateTimeKind.Utc).AddTicks(3231),
                             Title = "Pew Pew Pew"
                         });
                 });
@@ -219,7 +219,8 @@ namespace MyBackendAPI.Migrations
 
                     b.HasKey("ProfileId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Profile");
                 });
@@ -378,8 +379,8 @@ namespace MyBackendAPI.Migrations
             modelBuilder.Entity("MyBackendAPI.Models.Profile", b =>
                 {
                     b.HasOne("MyBackendAPI.Models.User", "User")
-                        .WithMany("Profile")
-                        .HasForeignKey("UserId")
+                        .WithOne("Profile")
+                        .HasForeignKey("MyBackendAPI.Models.Profile", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -480,7 +481,8 @@ namespace MyBackendAPI.Migrations
                 {
                     b.Navigation("Order");
 
-                    b.Navigation("Profile");
+                    b.Navigation("Profile")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
