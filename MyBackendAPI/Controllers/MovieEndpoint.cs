@@ -17,6 +17,7 @@ namespace api_cinema_challenge.EndPoints
             group.MapPost("/", CreateMovie);
             group.MapDelete("/{id:int}", DeleteMovie);
             group.MapPut("/{id:int}", UpdateMovie);
+            group.MapPut("/Image{id:int}", UpdateMovieImage);
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -96,6 +97,28 @@ namespace api_cinema_challenge.EndPoints
                 movie.ReleaseYear = model.ReleaseYear;
                 movie.Director = model.Director;
                 movie.Image = model.Image;
+
+                var updatedMovie = await repository.UpdateMovie(movie);
+                return TypedResults.Ok(updatedMovie);
+            }
+            catch (Exception e)
+            {
+                return TypedResults.BadRequest(e);
+            }
+        }
+        public static async Task<IResult> UpdateMovieImage(IMovieRepository repository, int id, string image)
+        {
+
+            try
+            {
+                var movie = await repository.GetMovie(id);
+                if (movie == null)
+                {
+                    return TypedResults.NotFound("Movie does not exist");
+                }
+
+                
+                movie.Image = image;
 
                 var updatedMovie = await repository.UpdateMovie(movie);
                 return TypedResults.Ok(updatedMovie);
