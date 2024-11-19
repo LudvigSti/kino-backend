@@ -11,6 +11,8 @@ builder.Services.AddDbContext<CinemaContext>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
+builder.Services.AddScoped<IScreeningRepository, ScreeningRepository>();
+builder.Services.AddScoped<IHallRepository, HallRepository>();
 builder.Services.AddControllers();
 
 // Add CORS services
@@ -37,5 +39,7 @@ if (app.Environment.IsDevelopment())
 app.configureMovieEndpoint();
 app.configureUserEndpoint();
 app.configureProfileEndpoint();
+app.configureScreeningEndpoint();
+app.configureHallEndpoints();
 app.UseHttpsRedirection(); // Only enable HTTPS redirection in production
 app.Run();
