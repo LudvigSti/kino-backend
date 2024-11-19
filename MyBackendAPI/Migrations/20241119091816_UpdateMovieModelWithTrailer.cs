@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -9,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyBackendAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class IMig : Migration
+    public partial class UpdateMovieModelWithTrailer : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,7 +54,8 @@ namespace MyBackendAPI.Migrations
                     Duration = table.Column<int>(type: "integer", nullable: false),
                     ReleaseYear = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Director = table.Column<string>(type: "text", nullable: false),
-                    Image = table.Column<string>(type: "text", nullable: false)
+                    Images = table.Column<List<string>>(type: "text[]", nullable: false),
+                    Trailer = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -247,12 +249,12 @@ namespace MyBackendAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Movie",
-                columns: new[] { "MovieId", "AgeRating", "Director", "Duration", "Image", "Rating", "ReleaseYear", "Title" },
+                columns: new[] { "MovieId", "AgeRating", "Director", "Duration", "Images", "Rating", "ReleaseYear", "Title", "Trailer" },
                 values: new object[,]
                 {
-                    { 1, 16, "Bent Bernoft", 100, "https://www.imdb.com/title/tt0175142/mediaviewer/rm3954579456/?ref_=tt_ov_i", 10, new DateTime(2024, 11, 18, 13, 51, 35, 555, DateTimeKind.Utc).AddTicks(3221), "Scary Movie" },
-                    { 2, 16, "Billy Bill", 100, "testimage", 10, new DateTime(2024, 11, 18, 13, 51, 35, 555, DateTimeKind.Utc).AddTicks(3230), "Star Wars" },
-                    { 3, 16, "Anders Andersen", 100, "testimage", 10, new DateTime(2024, 11, 18, 13, 51, 35, 555, DateTimeKind.Utc).AddTicks(3231), "Pew Pew Pew" }
+                    { 1, 16, "Bent Bernoft", 100, new List<string> { "https://www.imdb.com/title/tt0175142/mediaviewer/rm3954579456/?ref_=tt_ov_i", "https://c8.alamy.com/comp/2JHCP0R/scary-movie-film-poster-scary-movie-2000-2JHCP0R.jpg" }, 10, new DateTime(2024, 11, 19, 9, 18, 14, 932, DateTimeKind.Utc).AddTicks(2738), "Scary Movie", "https://youtu.be/SzpGYrrcJZw" },
+                    { 2, 16, "Billy Bill", 100, new List<string> { "https://i.ebayimg.com/00/s/MTYwMFgxMDY2/z/oZ0AAOSwSj1jJjKs/$_57.JPG?set_id=880000500F", "https://images6.alphacoders.com/111/1115518.jpg" }, 10, new DateTime(2024, 11, 19, 9, 18, 14, 932, DateTimeKind.Utc).AddTicks(2778), "Star Wars", "https://youtu.be/5UnjrG_N8hU" },
+                    { 3, 16, "Anders Andersen", 100, new List<string> { "https://i.ebayimg.com/images/g/hX8AAOSwk5FUwoPc/s-l1200.jpg", "https://images7.alphacoders.com/518/518783.jpg" }, 10, new DateTime(2024, 11, 19, 9, 18, 14, 932, DateTimeKind.Utc).AddTicks(2785), "Inception", "https://youtu.be/LifqWf0BAOA" }
                 });
 
             migrationBuilder.InsertData(

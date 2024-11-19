@@ -15,7 +15,8 @@ namespace MyBackendAPI.Models
         public int Duration { get; set; }
         public DateTime ReleaseYear { get; set; }
         public string Director { get; set; }
-        public string Image { get; set; }
+        public List<string> Images { get; set; } = new List<string>();
+        public string Trailer { get; set; }
 
         //TODO:
         //Make DTO's for theese
@@ -29,7 +30,7 @@ namespace MyBackendAPI.Models
         public ICollection<Screening> Screenings { get; set; } = new List<Screening>();
 
         public Movie() { }
-        public Movie (int movieId, string title, int rating, int ageRating, int duration, DateTime releaseYear, string director, string image)
+        public Movie (int movieId, string title, int rating, int ageRating, int duration, DateTime releaseYear, string director, List <string> images, string trailer)
         {
             MovieId = movieId;
             Title = title;
@@ -38,7 +39,8 @@ namespace MyBackendAPI.Models
             Duration = duration;
             ReleaseYear = releaseYear;
             Director = director;
-            Image = image;
+            Images = images;
+            Trailer = trailer;
         }
     }
 
