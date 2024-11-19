@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyBackendAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class IMig : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -250,9 +250,9 @@ namespace MyBackendAPI.Migrations
                 columns: new[] { "MovieId", "AgeRating", "Director", "Duration", "Image", "Rating", "ReleaseYear", "Title" },
                 values: new object[,]
                 {
-                    { 1, 16, "Bent Bernoft", 100, "testimage", 10, new DateTime(2024, 11, 14, 12, 29, 6, 0, DateTimeKind.Utc).AddTicks(9356), "Scary Movie" },
-                    { 2, 16, "Billy Bill", 100, "testimage", 10, new DateTime(2024, 11, 14, 12, 29, 6, 0, DateTimeKind.Utc).AddTicks(9378), "Star Wars" },
-                    { 3, 16, "Anders Andersen", 100, "testimage", 10, new DateTime(2024, 11, 14, 12, 29, 6, 0, DateTimeKind.Utc).AddTicks(9381), "Pew Pew Pew" }
+                    { 1, 16, "Bent Bernoft", 100, "https://www.imdb.com/title/tt0175142/mediaviewer/rm3954579456/?ref_=tt_ov_i", 10, new DateTime(2024, 11, 18, 13, 51, 35, 555, DateTimeKind.Utc).AddTicks(3221), "Scary Movie" },
+                    { 2, 16, "Billy Bill", 100, "testimage", 10, new DateTime(2024, 11, 18, 13, 51, 35, 555, DateTimeKind.Utc).AddTicks(3230), "Star Wars" },
+                    { 3, 16, "Anders Andersen", 100, "testimage", 10, new DateTime(2024, 11, 18, 13, 51, 35, 555, DateTimeKind.Utc).AddTicks(3231), "Pew Pew Pew" }
                 });
 
             migrationBuilder.InsertData(
@@ -282,7 +282,8 @@ namespace MyBackendAPI.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Profile_UserId",
                 table: "Profile",
-                column: "UserId");
+                column: "UserId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Screening_HallId",

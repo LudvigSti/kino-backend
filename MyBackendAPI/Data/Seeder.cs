@@ -11,7 +11,7 @@ namespace MyBackendAPI.Data
         public Seeder()
         {
             //Movies
-            Movie movie1 = new Movie(1, "Scary Movie", 10, 16, 100, DateTime.UtcNow, "Bent Bernoft", "testimage");
+            Movie movie1 = new Movie(1, "Scary Movie", 10, 16, 100, DateTime.UtcNow, "Bent Bernoft", "https://www.imdb.com/title/tt0175142/mediaviewer/rm3954579456/?ref_=tt_ov_i");
             Movie movie2 = new Movie(2, "Star Wars", 10, 16, 100, DateTime.UtcNow, "Billy Bill", "testimage");
             Movie movie3 = new Movie(3, "Pew Pew Pew", 10, 16, 100, DateTime.UtcNow, "Anders Andersen", "testimage");
 

@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MyBackendAPI.Models
 {
@@ -10,7 +11,7 @@ namespace MyBackendAPI.Models
         public int HallId { get; set; }
         public string Name { get; set; }
         public int Capacity { get; set; }
-
+        [JsonIgnore]
         public ICollection<Screening> Screening { get; set; }
 
         public CinemaHall() { }

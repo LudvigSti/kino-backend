@@ -10,8 +10,31 @@ namespace MyBackendAPI.Controllers
         public static void configureScreeningEndpoint(this WebApplication app)
         {
             var group = app.MapGroup("screening");
+            group.MapGet("/", GetScreenings);
+            group.MapGet("/{id:int}", GetScreening);
             group.MapGet("/getScreeningsByMovieId/{movieId:int}", GetScreeningsByMovieId);
             group.MapPost("/", CreateScreening);
+            group.MapDelete("/{id:int}", DeleteScreening);
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public static async Task<IResult> GetScreenings(IScreeningRepository repository)
+        {
+            var screenings = await repository.GetScreenings();
+            return TypedResults.Ok(screenings);
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public static async Task<IResult> GetScreening(IScreeningRepository repository, int id)
+        {
+            var screening = await repository.GetScreening(id);
+            if(screening == null)
+            {
+                return TypedResults.NotFound("Screening does not exist");
+            }
+
+            return TypedResults.Ok(screening);
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -58,6 +81,18 @@ namespace MyBackendAPI.Controllers
             {
                 return TypedResults.BadRequest(e);
             }
+        }
+
+        public static async Task<IResult> DeleteScreening(IScreeningRepository repository, int id)
+        {
+            var screeningDeleted = await repository.GetScreening(id);
+            if(screeningDeleted == null)
+            {
+                return TypedResults.NotFound("Screening id does not exist");
+            }
+
+            await repository.DeleteScreening(id);
+            return TypedResults.Ok(screeningDeleted);
         }
     }
 }
