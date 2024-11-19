@@ -13,6 +13,8 @@ namespace MyBackendAPI.Models
 
         public ICollection<Screening> Screening { get; set; }
 
+        public CinemaHall() { }
+
         public CinemaHall(int hallId, string name, int capacity)
         {
             HallId = hallId;

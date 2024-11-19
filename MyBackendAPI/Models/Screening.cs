@@ -19,9 +19,8 @@ namespace MyBackendAPI.Models
         public Movie Movie { get; set; }
         
 
-        public Screening(int screeningId, DateTime screeningTime, int hallId, int movieId)
+        public Screening(DateTime screeningTime, int hallId, int movieId)
         {
-            ScreeningId = screeningId;
             ScreeningTime = screeningTime;
             HallId = hallId;
             MovieId = movieId;

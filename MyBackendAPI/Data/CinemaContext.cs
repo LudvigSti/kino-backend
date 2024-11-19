@@ -40,5 +40,7 @@ namespace MyBackendAPI.Data
         public DbSet<Movie> Movies { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Screening> Screenings { get; set; }
+        public DbSet<CinemaHall> CinemaHalls { get; set; }
     }
 }
