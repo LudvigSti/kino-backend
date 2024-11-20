@@ -43,6 +43,9 @@ namespace MyBackendAPI.Data
             Profile profile2 = new Profile("Jane", "Doe", 2, new DateOnly(1990, 1, 1), "icon", 0);
             profile2.ProfileId = 2;
 
+            _profiles.Add(profile1);
+            _profiles.Add(profile2);
+
         }
 
         public List<Movie> MovieList { get { return _movies; } }

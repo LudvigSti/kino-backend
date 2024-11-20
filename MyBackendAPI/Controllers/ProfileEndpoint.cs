@@ -18,6 +18,7 @@ namespace MyBackendAPI.Controllers
             group.MapPut("/{id:int}", UpdateProfile);
             group.MapPost("/createUserProfile", CreateUserAndProfile);
             group.MapPost("/getProfileByUserId", GetProfileByUserId);
+            group.MapPost("/getProfileByEmail", GetProfileByEmail);
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -50,6 +51,26 @@ namespace MyBackendAPI.Controllers
                 if (profile == null)
                 {
                     return TypedResults.NotFound("Profile does not exist for the given UserId");
+                }
+                return TypedResults.Ok(profile);
+            }
+            catch (Exception e)
+            {
+                return TypedResults.BadRequest(e.Message);
+            }
+        }
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public static async Task<IResult> GetProfileByEmail(IProfileRepository repository, string email)
+        {
+            try
+            {
+                var profile = await repository.GetProfileByEmail(email);
+                if (profile == null)
+                {
+                    return TypedResults.NotFound("Profile does not exist for the given email");
                 }
                 return TypedResults.Ok(profile);
             }
@@ -123,11 +144,7 @@ namespace MyBackendAPI.Controllers
             try
             {
                 // Create User
-                User userCreated = new User
-                {
-                    Email = model.Email,
-                    Password = model.Password
-                };
+                User userCreated = new User(model.Email, model.Password); // Use the constructor that hashes the password
                 await userRepository.CreateUser(userCreated);
 
                 // Create Profile
