@@ -23,7 +23,7 @@ namespace MyBackendAPI.Repositories
         }
         public async Task<ICollection<Screening>> GetScreeningsByMovieId(int id)
         {
-            return await _db.Screenings.Where(s => s.MovieId == id).ToListAsync();
+            return await _db.Screenings.Include(s => s.CinemaHall).Where(s => s.MovieId == id).ToListAsync();
         }
 
         public async Task<Screening> CreateScreening(Screening screening)
