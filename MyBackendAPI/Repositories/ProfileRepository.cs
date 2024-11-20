@@ -27,6 +27,11 @@ namespace MyBackendAPI.Repositories
             return await _db.Profiles.FirstOrDefaultAsync(x => x.UserId == userId);
         }
 
+        public async Task<Profile> GetProfileByEmail(string email)
+        {
+            return await _db.Profiles.FirstOrDefaultAsync(x => x.User.Email == email)!;
+        }
+
         public async Task<Profile> CreateProfile(Profile profile)
         {
             await _db.AddAsync(profile);
