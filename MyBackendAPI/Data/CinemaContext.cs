@@ -26,7 +26,10 @@ namespace MyBackendAPI.Data
             Seeder seeder = new Seeder();
             modelBuilder.Entity<Movie>().HasData(seeder.MovieList);
             modelBuilder.Entity<User>().HasData(seeder.UserList);
-            
+            modelBuilder.Entity<Profile>().HasData(seeder.ProfileList);
+            modelBuilder.Entity<CinemaHall>().HasData(seeder.CinemaHallList);
+            modelBuilder.Entity<Screening>().HasData(seeder.ScreeningList);
+
             modelBuilder.Entity<LikedMovie>()
                 .HasKey(lm => new { lm.ProfileId, lm.MovieId });
 

@@ -7,6 +7,8 @@ namespace MyBackendAPI.Data
         private List<Movie> _movies = new List<Movie>();
         private List<User> _users = new List<User>();
         private List<Profile> _profiles = new List<Profile>();
+        private List<CinemaHall> _halls = new List<CinemaHall>();
+        private List<Screening> _screenings = new List<Screening>();
 
         public Seeder()
         {
@@ -43,10 +45,49 @@ namespace MyBackendAPI.Data
             Profile profile2 = new Profile("Jane", "Doe", 2, new DateOnly(1990, 1, 1), "icon", 0);
             profile2.ProfileId = 2;
 
+            _profiles.Add(profile1);
+            _profiles.Add(profile2);
+
+            //CinemaHalls
+            CinemaHall hall1 = new CinemaHall(1, "Oslo big", 200);
+            CinemaHall hall2 = new CinemaHall(2, "Oslo small", 50);
+            CinemaHall hall3 = new CinemaHall(3, "Bergen big", 10);
+            CinemaHall hall4 = new CinemaHall(4, "Bergen small", 2);
+
+            _halls.Add(hall1);
+            _halls.Add(hall2);
+            _halls.Add(hall3);
+            _halls.Add(hall4);
+
+            //Screenings
+            Screening screening1 = new Screening(DateTime.UtcNow, 2, 1);
+            screening1.ScreeningId = 1;
+            Screening screening2 = new Screening(DateTime.UtcNow, 1, 1);
+            screening2.ScreeningId = 2;
+            Screening screening3 = new Screening(DateTime.UtcNow, 3, 1);
+            screening3.ScreeningId = 3;
+            Screening screening4 = new Screening(DateTime.UtcNow, 2, 2);
+            screening4.ScreeningId = 4;
+            Screening screening5 = new Screening(DateTime.UtcNow, 2, 3);
+            screening5.ScreeningId = 5;
+            Screening screening6 = new Screening(DateTime.UtcNow, 4, 2);
+            screening6.ScreeningId = 6;
+            Screening screening7 = new Screening(DateTime.UtcNow, 3, 2);
+            screening7.ScreeningId = 7;
+
+            _screenings.Add(screening1);
+            _screenings.Add(screening2);
+            _screenings.Add(screening3);
+            _screenings.Add(screening4);
+            _screenings.Add(screening5);
+            _screenings.Add(screening6);
+            _screenings.Add(screening7);
         }
 
         public List<Movie> MovieList { get { return _movies; } }
         public List<User> UserList { get { return _users;  } }
         public List<Profile> ProfileList { get { return _profiles;  } }
+        public List<CinemaHall> CinemaHallList { get { return _halls;  } }
+        public List<Screening> ScreeningList { get { return _screenings; } }
     }
 }
