@@ -45,5 +45,10 @@ namespace MyBackendAPI.Repositories
             await _db.SaveChangesAsync();
             return user;
         }
+
+        public async Task<User> GetUserByEmail(string email)
+        {
+            return await _db.Users.FirstOrDefaultAsync(x => x.Email == email)!;
+        }
     }
 }

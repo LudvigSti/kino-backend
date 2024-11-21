@@ -24,7 +24,17 @@ namespace MyBackendAPI.Models
         public User(string email, string password)
         {
             Email = email;
-            Password = password;
+            Password = HashPassword(password);
+        }
+
+        private string HashPassword(string password)
+        {
+           return BCrypt.Net.BCrypt.HashPassword(password);
+        }
+
+        public bool VerifyPassword(string password)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, Password);
         }
     }
 }

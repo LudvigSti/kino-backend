@@ -9,5 +9,6 @@ namespace MyBackendAPI.Repositories
         Task<User?> GetUser(int id);
         Task<User?> DeleteUser(int id);
         Task<User> UpdateUser(User user);
+        Task<User> GetUserByEmail(string email);
     }
 }
