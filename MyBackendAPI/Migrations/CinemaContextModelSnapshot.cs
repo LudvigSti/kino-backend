@@ -41,6 +41,32 @@ namespace MyBackendAPI.Migrations
                     b.HasKey("HallId");
 
                     b.ToTable("CinemaHall");
+
+                    b.HasData(
+                        new
+                        {
+                            HallId = 1,
+                            Capacity = 200,
+                            Name = "Oslo big"
+                        },
+                        new
+                        {
+                            HallId = 2,
+                            Capacity = 50,
+                            Name = "Oslo small"
+                        },
+                        new
+                        {
+                            HallId = 3,
+                            Capacity = 10,
+                            Name = "Bergen big"
+                        },
+                        new
+                        {
+                            HallId = 4,
+                            Capacity = 2,
+                            Name = "Bergen small"
+                        });
                 });
 
             modelBuilder.Entity("MyBackendAPI.Models.Genre", b =>
@@ -124,7 +150,7 @@ namespace MyBackendAPI.Migrations
                             Duration = 100,
                             Images = new List<string> { "https://www.imdb.com/title/tt0175142/mediaviewer/rm3954579456/?ref_=tt_ov_i", "https://c8.alamy.com/comp/2JHCP0R/scary-movie-film-poster-scary-movie-2000-2JHCP0R.jpg" },
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 19, 9, 18, 14, 932, DateTimeKind.Utc).AddTicks(2738),
+                            ReleaseYear = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8274),
                             Title = "Scary Movie",
                             Trailer = "https://youtu.be/SzpGYrrcJZw"
                         },
@@ -136,7 +162,7 @@ namespace MyBackendAPI.Migrations
                             Duration = 100,
                             Images = new List<string> { "https://i.ebayimg.com/00/s/MTYwMFgxMDY2/z/oZ0AAOSwSj1jJjKs/$_57.JPG?set_id=880000500F", "https://images6.alphacoders.com/111/1115518.jpg" },
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 19, 9, 18, 14, 932, DateTimeKind.Utc).AddTicks(2778),
+                            ReleaseYear = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8284),
                             Title = "Star Wars",
                             Trailer = "https://youtu.be/5UnjrG_N8hU"
                         },
@@ -148,7 +174,7 @@ namespace MyBackendAPI.Migrations
                             Duration = 100,
                             Images = new List<string> { "https://i.ebayimg.com/images/g/hX8AAOSwk5FUwoPc/s-l1200.jpg", "https://images7.alphacoders.com/518/518783.jpg" },
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 19, 9, 18, 14, 932, DateTimeKind.Utc).AddTicks(2785),
+                            ReleaseYear = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8287),
                             Title = "Inception",
                             Trailer = "https://youtu.be/LifqWf0BAOA"
                         });
@@ -228,6 +254,28 @@ namespace MyBackendAPI.Migrations
                         .IsUnique();
 
                     b.ToTable("Profile");
+
+                    b.HasData(
+                        new
+                        {
+                            ProfileId = 1,
+                            DateOfBirth = new DateOnly(1990, 1, 1),
+                            FirstName = "John",
+                            Icon = "icon",
+                            LastName = "Doe",
+                            Points = 0,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            ProfileId = 2,
+                            DateOfBirth = new DateOnly(1990, 1, 1),
+                            FirstName = "Jane",
+                            Icon = "icon",
+                            LastName = "Doe",
+                            Points = 0,
+                            UserId = 2
+                        });
                 });
 
             modelBuilder.Entity("MyBackendAPI.Models.Screening", b =>
@@ -254,6 +302,57 @@ namespace MyBackendAPI.Migrations
                     b.HasIndex("MovieId");
 
                     b.ToTable("Screening");
+
+                    b.HasData(
+                        new
+                        {
+                            ScreeningId = 1,
+                            HallId = 2,
+                            MovieId = 1,
+                            ScreeningTime = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8318)
+                        },
+                        new
+                        {
+                            ScreeningId = 2,
+                            HallId = 1,
+                            MovieId = 1,
+                            ScreeningTime = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8320)
+                        },
+                        new
+                        {
+                            ScreeningId = 3,
+                            HallId = 3,
+                            MovieId = 1,
+                            ScreeningTime = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8321)
+                        },
+                        new
+                        {
+                            ScreeningId = 4,
+                            HallId = 2,
+                            MovieId = 2,
+                            ScreeningTime = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8322)
+                        },
+                        new
+                        {
+                            ScreeningId = 5,
+                            HallId = 2,
+                            MovieId = 3,
+                            ScreeningTime = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8322)
+                        },
+                        new
+                        {
+                            ScreeningId = 6,
+                            HallId = 4,
+                            MovieId = 2,
+                            ScreeningTime = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8323)
+                        },
+                        new
+                        {
+                            ScreeningId = 7,
+                            HallId = 3,
+                            MovieId = 2,
+                            ScreeningTime = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8323)
+                        });
                 });
 
             modelBuilder.Entity("MyBackendAPI.Models.Ticket", b =>
