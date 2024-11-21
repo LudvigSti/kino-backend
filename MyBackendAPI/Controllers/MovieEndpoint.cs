@@ -52,14 +52,16 @@ namespace api_cinema_challenge.EndPoints
                 movieCreated.Duration = model.Duration;
                 movieCreated.ReleaseYear = model.ReleaseYear;
                 movieCreated.Director = model.Director;
-                movieCreated.Images[0] = model.Image;
+                movieCreated.Trailer = model.Trailer;
+                movieCreated.Images.Add(model.Image);
 
+                
                 await repository.CreateMovie(movieCreated);
                 return TypedResults.Created("success", movieCreated);
             }
             catch (Exception e)
             {
-                return TypedResults.BadRequest(e);
+                return TypedResults.BadRequest(new { Error = "An error occurred while processing your request.", Details = e.Message });
             }
         }
 
