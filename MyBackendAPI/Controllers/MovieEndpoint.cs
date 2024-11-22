@@ -54,8 +54,6 @@ namespace api_cinema_challenge.EndPoints
                 movieCreated.ReleaseYear = model.ReleaseYear;
                 movieCreated.Director = model.Director;
                 movieCreated.Trailer = model.Trailer;
-                movieCreated.Images.Add(model.Image);
-
                 
                 await repository.CreateMovie(movieCreated);
                 return TypedResults.Created("success", movieCreated);
@@ -99,7 +97,6 @@ namespace api_cinema_challenge.EndPoints
                 movie.Duration = model.Duration;
                 movie.ReleaseYear = model.ReleaseYear;
                 movie.Director = model.Director;
-                movie.Images[0] = model.Image;
 
                 var updatedMovie = await repository.UpdateMovie(movie);
                 return TypedResults.Ok(updatedMovie);

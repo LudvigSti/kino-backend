@@ -73,7 +73,7 @@ namespace MyBackendAPI.Controllers
                     return TypedResults.NotFound("Movie and hall must exist");
                 }
 
-                Screening screening = new Screening(model.StartTime, model.hallId, model.movieId);
+                Screening screening = new Screening(model.StartTime, model.hallId, model.movieId, model.About);
                 var screeningCreated = await screeningRepository.CreateScreening(screening);
                 return TypedResults.Ok(screeningCreated);
             }
