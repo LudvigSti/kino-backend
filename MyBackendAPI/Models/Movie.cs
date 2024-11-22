@@ -18,8 +18,6 @@ namespace MyBackendAPI.Models
         public List<string> Images { get; set; } = new List<string>();
         public string Trailer { get; set; } = "";
 
-        //TODO:
-        //Make DTO's for theese
         [JsonIgnore]
         public ICollection<MovieWithGenre> MovieWithGenres { get; set; } = new List<MovieWithGenre>();
         [JsonIgnore]
