@@ -13,15 +13,15 @@ namespace MyBackendAPI.Data
         public Seeder()
         {
             //Movies
-            Movie movie1 = new Movie(1, "Scary Movie", 10, 16, 100, 2001, "Bent Bernoft", new List<string> { 
+            Movie movie1 = new Movie(1, "Scary Movie", 10, 16, 100, new DateOnly(2021, 1, 1), "Bent Bernoft", new List<string> { 
                 "https://www.imdb.com/title/tt0175142/mediaviewer/rm3954579456/?ref_=tt_ov_i",
                 "https://c8.alamy.com/comp/2JHCP0R/scary-movie-film-poster-scary-movie-2000-2JHCP0R.jpg" 
             }, "https://youtu.be/SzpGYrrcJZw");
-            Movie movie2 = new Movie(2, "Star Wars", 10, 16, 100, 1996, "Billy Bill", new List<string> { 
+            Movie movie2 = new Movie(2, "Star Wars", 10, 16, 100, new DateOnly(1996, 1, 1), "Billy Bill", new List<string> { 
                 "https://i.ebayimg.com/00/s/MTYwMFgxMDY2/z/oZ0AAOSwSj1jJjKs/$_57.JPG?set_id=880000500F",
                 "https://images6.alphacoders.com/111/1115518.jpg"
             }, "https://youtu.be/5UnjrG_N8hU");
-            Movie movie3 = new Movie(3, "Inception", 10, 16, 120, 2010, "Anders Andersen", new List<string> {
+            Movie movie3 = new Movie(3, "Inception", 10, 16, 122, new DateOnly(2016, 1, 1), "Anders Andersen", new List<string> {
                 "https://i.ebayimg.com/images/g/hX8AAOSwk5FUwoPc/s-l1200.jpg",
                 "https://images7.alphacoders.com/518/518783.jpg"
             }, "https://youtu.be/LifqWf0BAOA");

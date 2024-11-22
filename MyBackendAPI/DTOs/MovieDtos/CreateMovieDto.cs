@@ -8,7 +8,7 @@ namespace MyBackendAPI.DTOs.MovieDtos
         public int Rating { get; set; }
         public int AgeRating { get; set; }
         public int Duration { get; set; }
-        public int ReleaseYear { get; set; }
+        public DateOnly ReleaseDate { get; set; }
         public string Director { get; set; }
         public string Trailer { get; set; }
     }

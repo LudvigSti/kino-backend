@@ -13,7 +13,7 @@ namespace MyBackendAPI.Models
         public int Rating { get; set; }
         public int AgeRating { get; set; }
         public int Duration { get; set; }
-        public int ReleaseYear { get; set; }
+        public DateOnly ReleaseDate { get; set; }
         public string Director { get; set; }
         public List<string> Images { get; set; } = new List<string>();
         public string Trailer { get; set; } = "";
@@ -30,14 +30,14 @@ namespace MyBackendAPI.Models
         public ICollection<Screening> Screenings { get; set; } = new List<Screening>();
 
         public Movie() { }
-        public Movie (int movieId, string title, int rating, int ageRating, int duration, int releaseYear, string director, List <string> images, string trailer)
+        public Movie (int movieId, string title, int rating, int ageRating, int duration, DateOnly releaseDate, string director, List <string> images, string trailer)
         {
             MovieId = movieId;
             Title = title;
             Rating = rating;
             AgeRating = ageRating;
             Duration = duration;
-            ReleaseYear = releaseYear;
+            ReleaseDate = releaseDate;
             Director = director;
             Images = images;
             Trailer = trailer;
