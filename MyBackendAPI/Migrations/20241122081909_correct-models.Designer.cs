@@ -13,8 +13,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyBackendAPI.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20241121090448_ScreeningMigration")]
-    partial class ScreeningMigration
+    [Migration("20241122081909_correct-models")]
+    partial class correctmodels
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -129,8 +129,8 @@ namespace MyBackendAPI.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("ReleaseYear")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<int>("ReleaseYear")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -153,7 +153,7 @@ namespace MyBackendAPI.Migrations
                             Duration = 100,
                             Images = new List<string> { "https://www.imdb.com/title/tt0175142/mediaviewer/rm3954579456/?ref_=tt_ov_i", "https://c8.alamy.com/comp/2JHCP0R/scary-movie-film-poster-scary-movie-2000-2JHCP0R.jpg" },
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8274),
+                            ReleaseYear = 2001,
                             Title = "Scary Movie",
                             Trailer = "https://youtu.be/SzpGYrrcJZw"
                         },
@@ -165,7 +165,7 @@ namespace MyBackendAPI.Migrations
                             Duration = 100,
                             Images = new List<string> { "https://i.ebayimg.com/00/s/MTYwMFgxMDY2/z/oZ0AAOSwSj1jJjKs/$_57.JPG?set_id=880000500F", "https://images6.alphacoders.com/111/1115518.jpg" },
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8284),
+                            ReleaseYear = 1996,
                             Title = "Star Wars",
                             Trailer = "https://youtu.be/5UnjrG_N8hU"
                         },
@@ -174,10 +174,10 @@ namespace MyBackendAPI.Migrations
                             MovieId = 3,
                             AgeRating = 16,
                             Director = "Anders Andersen",
-                            Duration = 100,
+                            Duration = 120,
                             Images = new List<string> { "https://i.ebayimg.com/images/g/hX8AAOSwk5FUwoPc/s-l1200.jpg", "https://images7.alphacoders.com/518/518783.jpg" },
                             Rating = 10,
-                            ReleaseYear = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8287),
+                            ReleaseYear = 2010,
                             Title = "Inception",
                             Trailer = "https://youtu.be/LifqWf0BAOA"
                         });
@@ -289,6 +289,9 @@ namespace MyBackendAPI.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ScreeningId"));
 
+                    b.Property<string>("About")
+                        .HasColumnType("text");
+
                     b.Property<int>("HallId")
                         .HasColumnType("integer");
 
@@ -310,51 +313,58 @@ namespace MyBackendAPI.Migrations
                         new
                         {
                             ScreeningId = 1,
+                            About = "3D",
                             HallId = 2,
                             MovieId = 1,
-                            ScreeningTime = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8318)
+                            ScreeningTime = new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2701)
                         },
                         new
                         {
                             ScreeningId = 2,
+                            About = "2D",
                             HallId = 1,
                             MovieId = 1,
-                            ScreeningTime = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8320)
+                            ScreeningTime = new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2705)
                         },
                         new
                         {
                             ScreeningId = 3,
+                            About = "Norsk tale",
                             HallId = 3,
                             MovieId = 1,
-                            ScreeningTime = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8321)
+                            ScreeningTime = new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2706)
                         },
                         new
                         {
                             ScreeningId = 4,
+                            About = "Original tale",
                             HallId = 2,
                             MovieId = 2,
-                            ScreeningTime = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8322)
+                            ScreeningTime = new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2707)
                         },
                         new
                         {
                             ScreeningId = 5,
+                            About = "3D",
                             HallId = 2,
                             MovieId = 3,
-                            ScreeningTime = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8322)
+                            ScreeningTime = new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2708)
                         },
                         new
                         {
                             ScreeningId = 6,
+                            About = "3D",
                             HallId = 4,
                             MovieId = 2,
-                            ScreeningTime = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8323)
+                            ScreeningTime = new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2708)
                         },
                         new
                         {
                             ScreeningId = 7,
+                            About = "3D",
                             HallId = 3,
                             MovieId = 2,
-                            ScreeningTime = new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8323)
+                            ScreeningTime = new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2709)
                         });
                 });
 
@@ -409,13 +419,13 @@ namespace MyBackendAPI.Migrations
                         {
                             UserId = 1,
                             Email = "example@gmail.com",
-                            Password = "Puppy123"
+                            Password = "$2a$11$g3z7sycfCJY1d9rX09ebVegn6gisfb7a/VQMkIKPt/jFXnWrbx.vS"
                         },
                         new
                         {
                             UserId = 2,
                             Email = "email@email.com",
-                            Password = "ILoveMom9999"
+                            Password = "$2a$11$PaVzZINcd4jynaetRvo3GeTZrVRy4sPlx3A/KhMigxyCTMvCsabhm"
                         });
                 });
 

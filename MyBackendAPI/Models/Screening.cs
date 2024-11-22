@@ -19,12 +19,14 @@ namespace MyBackendAPI.Models
         [ForeignKey("MovieId")]
         public Movie Movie { get; set; }
         
+        public string? About { get; set; }
 
-        public Screening(DateTime screeningTime, int hallId, int movieId)
+        public Screening(DateTime screeningTime, int hallId, int movieId, string about)
         {
             ScreeningTime = screeningTime;
             HallId = hallId;
             MovieId = movieId;
+            About = about;
         }
 
     }

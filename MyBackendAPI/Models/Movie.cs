@@ -13,10 +13,10 @@ namespace MyBackendAPI.Models
         public int Rating { get; set; }
         public int AgeRating { get; set; }
         public int Duration { get; set; }
-        public DateTime ReleaseYear { get; set; }
+        public int ReleaseYear { get; set; }
         public string Director { get; set; }
         public List<string> Images { get; set; } = new List<string>();
-        public string Trailer { get; set; }
+        public string Trailer { get; set; } = "";
 
         //TODO:
         //Make DTO's for theese
@@ -30,7 +30,7 @@ namespace MyBackendAPI.Models
         public ICollection<Screening> Screenings { get; set; } = new List<Screening>();
 
         public Movie() { }
-        public Movie (int movieId, string title, int rating, int ageRating, int duration, DateTime releaseYear, string director, List <string> images, string trailer)
+        public Movie (int movieId, string title, int rating, int ageRating, int duration, int releaseYear, string director, List <string> images, string trailer)
         {
             MovieId = movieId;
             Title = title;

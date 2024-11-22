@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyBackendAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class ScreeningMigration : Migration
+    public partial class correctmodels : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,7 +52,7 @@ namespace MyBackendAPI.Migrations
                     Rating = table.Column<int>(type: "integer", nullable: false),
                     AgeRating = table.Column<int>(type: "integer", nullable: false),
                     Duration = table.Column<int>(type: "integer", nullable: false),
-                    ReleaseYear = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ReleaseYear = table.Column<int>(type: "integer", nullable: false),
                     Director = table.Column<string>(type: "text", nullable: false),
                     Images = table.Column<List<string>>(type: "text[]", nullable: false),
                     Trailer = table.Column<string>(type: "text", nullable: false)
@@ -108,7 +108,8 @@ namespace MyBackendAPI.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ScreeningTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     HallId = table.Column<int>(type: "integer", nullable: false),
-                    MovieId = table.Column<int>(type: "integer", nullable: false)
+                    MovieId = table.Column<int>(type: "integer", nullable: false),
+                    About = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -263,9 +264,9 @@ namespace MyBackendAPI.Migrations
                 columns: new[] { "MovieId", "AgeRating", "Director", "Duration", "Images", "Rating", "ReleaseYear", "Title", "Trailer" },
                 values: new object[,]
                 {
-                    { 1, 16, "Bent Bernoft", 100, new List<string> { "https://www.imdb.com/title/tt0175142/mediaviewer/rm3954579456/?ref_=tt_ov_i", "https://c8.alamy.com/comp/2JHCP0R/scary-movie-film-poster-scary-movie-2000-2JHCP0R.jpg" }, 10, new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8274), "Scary Movie", "https://youtu.be/SzpGYrrcJZw" },
-                    { 2, 16, "Billy Bill", 100, new List<string> { "https://i.ebayimg.com/00/s/MTYwMFgxMDY2/z/oZ0AAOSwSj1jJjKs/$_57.JPG?set_id=880000500F", "https://images6.alphacoders.com/111/1115518.jpg" }, 10, new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8284), "Star Wars", "https://youtu.be/5UnjrG_N8hU" },
-                    { 3, 16, "Anders Andersen", 100, new List<string> { "https://i.ebayimg.com/images/g/hX8AAOSwk5FUwoPc/s-l1200.jpg", "https://images7.alphacoders.com/518/518783.jpg" }, 10, new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8287), "Inception", "https://youtu.be/LifqWf0BAOA" }
+                    { 1, 16, "Bent Bernoft", 100, new List<string> { "https://www.imdb.com/title/tt0175142/mediaviewer/rm3954579456/?ref_=tt_ov_i", "https://c8.alamy.com/comp/2JHCP0R/scary-movie-film-poster-scary-movie-2000-2JHCP0R.jpg" }, 10, 2001, "Scary Movie", "https://youtu.be/SzpGYrrcJZw" },
+                    { 2, 16, "Billy Bill", 100, new List<string> { "https://i.ebayimg.com/00/s/MTYwMFgxMDY2/z/oZ0AAOSwSj1jJjKs/$_57.JPG?set_id=880000500F", "https://images6.alphacoders.com/111/1115518.jpg" }, 10, 1996, "Star Wars", "https://youtu.be/5UnjrG_N8hU" },
+                    { 3, 16, "Anders Andersen", 120, new List<string> { "https://i.ebayimg.com/images/g/hX8AAOSwk5FUwoPc/s-l1200.jpg", "https://images7.alphacoders.com/518/518783.jpg" }, 10, 2010, "Inception", "https://youtu.be/LifqWf0BAOA" }
                 });
 
             migrationBuilder.InsertData(
@@ -273,8 +274,8 @@ namespace MyBackendAPI.Migrations
                 columns: new[] { "UserId", "Email", "Password" },
                 values: new object[,]
                 {
-                    { 1, "example@gmail.com", "Puppy123" },
-                    { 2, "email@email.com", "ILoveMom9999" }
+                    { 1, "example@gmail.com", "$2a$11$g3z7sycfCJY1d9rX09ebVegn6gisfb7a/VQMkIKPt/jFXnWrbx.vS" },
+                    { 2, "email@email.com", "$2a$11$PaVzZINcd4jynaetRvo3GeTZrVRy4sPlx3A/KhMigxyCTMvCsabhm" }
                 });
 
             migrationBuilder.InsertData(
@@ -288,16 +289,16 @@ namespace MyBackendAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Screening",
-                columns: new[] { "ScreeningId", "HallId", "MovieId", "ScreeningTime" },
+                columns: new[] { "ScreeningId", "About", "HallId", "MovieId", "ScreeningTime" },
                 values: new object[,]
                 {
-                    { 1, 2, 1, new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8318) },
-                    { 2, 1, 1, new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8320) },
-                    { 3, 3, 1, new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8321) },
-                    { 4, 2, 2, new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8322) },
-                    { 5, 2, 3, new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8322) },
-                    { 6, 4, 2, new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8323) },
-                    { 7, 3, 2, new DateTime(2024, 11, 21, 9, 4, 43, 293, DateTimeKind.Utc).AddTicks(8323) }
+                    { 1, "3D", 2, 1, new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2701) },
+                    { 2, "2D", 1, 1, new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2705) },
+                    { 3, "Norsk tale", 3, 1, new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2706) },
+                    { 4, "Original tale", 2, 2, new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2707) },
+                    { 5, "3D", 2, 3, new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2708) },
+                    { 6, "3D", 4, 2, new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2708) },
+                    { 7, "3D", 3, 2, new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2709) }
                 });
 
             migrationBuilder.CreateIndex(
