@@ -11,5 +11,7 @@ namespace MyBackendAPI.DTOs.MovieDtos
         public DateOnly ReleaseDate { get; set; }
         public string Director { get; set; }
         public string Trailer { get; set; }
+        public string Image { get; set; }
+        public string Trailer { get; set; }
     }
 }
