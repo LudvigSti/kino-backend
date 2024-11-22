@@ -18,6 +18,7 @@ namespace api_cinema_challenge.EndPoints
             group.MapDelete("/{id:int}", DeleteMovie);
             group.MapPut("/{id:int}", UpdateMovie);
             group.MapPut("/Image{id:int}", UpdateMovieImage);
+            group.MapPut("AddImage{id:int}",AddLandscapeImageToMovie);
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -52,14 +53,16 @@ namespace api_cinema_challenge.EndPoints
                 movieCreated.Duration = model.Duration;
                 movieCreated.ReleaseYear = model.ReleaseYear;
                 movieCreated.Director = model.Director;
-                movieCreated.Images[0] = model.Image;
+                movieCreated.Trailer = model.Trailer;
+                movieCreated.Images.Add(model.Image);
 
+                
                 await repository.CreateMovie(movieCreated);
                 return TypedResults.Created("success", movieCreated);
             }
             catch (Exception e)
             {
-                return TypedResults.BadRequest(e);
+                return TypedResults.BadRequest(new { Error = "An error occurred while processing your request.", Details = e.Message });
             }
         }
 
@@ -128,7 +131,37 @@ namespace api_cinema_challenge.EndPoints
                 return TypedResults.BadRequest(e);
             }
         }
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public static async Task<IResult> AddLandscapeImageToMovie(IMovieRepository repository, int id, string imageUrl)
+        {
+            try
+            {
+                // Fetch the movie by ID
+                var movie = await repository.GetMovie(id);
+                if (movie == null)
+                {
+                    return TypedResults.NotFound("Movie does not exist");
+                }
 
+                // Append the new image URL to the Images list
+                if (movie.Images == null)
+                {
+                    movie.Images = new List<string>(); // Ensure Images list is initialized
+                }
+                movie.Images.Add(imageUrl);
+
+                // Update the movie in the repository
+                var updatedMovie = await repository.UpdateMovie(movie);
+                return TypedResults.Ok(updatedMovie);
+            }
+            catch (Exception e)
+            {
+                return TypedResults.BadRequest(new { Error = "An error occurred while processing your request.", Details = e.Message });
+            }
+        }
     }
 
 }
+
