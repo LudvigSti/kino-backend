@@ -274,8 +274,8 @@ namespace MyBackendAPI.Migrations
                 columns: new[] { "UserId", "Email", "Password" },
                 values: new object[,]
                 {
-                    { 1, "example@gmail.com", "$2a$11$F6ioen1Bi.nQzemG.1hotutn95aT8S.g7syl8VyDTmx9uF9I4U7mq" },
-                    { 2, "email@email.com", "$2a$11$L1WljVnvDDzhNo8pQSlIveAAPnElws0YkXauFC4wooTcTuRiKzeoe" }
+                    { 1, "example@gmail.com", "$2a$11$/1wQvuN5l7unQWi6Nkz96uJW2Qhfp5t5Jl7UqcYyusT5qs/mos4eq" },
+                    { 2, "email@email.com", "$2a$11$AbmjHNnsqqVppQkZyWok/.9JjsZB2sVYNFyJsmIJG8q/hYohvEi7S" }
                 });
 
             migrationBuilder.InsertData(
@@ -292,13 +292,13 @@ namespace MyBackendAPI.Migrations
                 columns: new[] { "ScreeningId", "About", "HallId", "MovieId", "ScreeningTime" },
                 values: new object[,]
                 {
-                    { 1, "3D", 2, 1, new DateTime(2024, 11, 22, 9, 27, 46, 198, DateTimeKind.Utc).AddTicks(2458) },
-                    { 2, "2D", 1, 1, new DateTime(2024, 11, 22, 9, 27, 46, 198, DateTimeKind.Utc).AddTicks(2463) },
-                    { 3, "Norsk tale", 3, 1, new DateTime(2024, 11, 22, 9, 27, 46, 198, DateTimeKind.Utc).AddTicks(2464) },
-                    { 4, "Original tale", 2, 2, new DateTime(2024, 11, 22, 9, 27, 46, 198, DateTimeKind.Utc).AddTicks(2465) },
-                    { 5, "3D", 2, 3, new DateTime(2024, 11, 22, 9, 27, 46, 198, DateTimeKind.Utc).AddTicks(2465) },
-                    { 6, "3D", 4, 2, new DateTime(2024, 11, 22, 9, 27, 46, 198, DateTimeKind.Utc).AddTicks(2466) },
-                    { 7, "3D", 3, 2, new DateTime(2024, 11, 22, 9, 27, 46, 198, DateTimeKind.Utc).AddTicks(2467) }
+                    { 1, "3D", 2, 1, new DateTime(2024, 11, 22, 9, 56, 15, 919, DateTimeKind.Utc).AddTicks(3495) },
+                    { 2, "2D", 1, 1, new DateTime(2024, 11, 22, 9, 56, 15, 919, DateTimeKind.Utc).AddTicks(3499) },
+                    { 3, "Norsk tale", 3, 1, new DateTime(2024, 11, 22, 9, 56, 15, 919, DateTimeKind.Utc).AddTicks(3500) },
+                    { 4, "Original tale", 2, 2, new DateTime(2024, 11, 22, 9, 56, 15, 919, DateTimeKind.Utc).AddTicks(3501) },
+                    { 5, "3D", 2, 3, new DateTime(2024, 11, 22, 9, 56, 15, 919, DateTimeKind.Utc).AddTicks(3502) },
+                    { 6, "3D", 4, 2, new DateTime(2024, 11, 22, 9, 56, 15, 919, DateTimeKind.Utc).AddTicks(3502) },
+                    { 7, "3D", 3, 2, new DateTime(2024, 11, 22, 9, 56, 15, 919, DateTimeKind.Utc).AddTicks(3503) }
                 });
 
             migrationBuilder.CreateIndex(
