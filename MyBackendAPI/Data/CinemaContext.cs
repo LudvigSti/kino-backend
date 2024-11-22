@@ -44,5 +44,6 @@ namespace MyBackendAPI.Data
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Screening> Screenings { get; set; }
         public DbSet<CinemaHall> CinemaHalls { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

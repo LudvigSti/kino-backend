@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MyBackendAPI.Models
 {
@@ -16,9 +17,10 @@ namespace MyBackendAPI.Models
 
         public int OrderId { get; set; }
         [ForeignKey("OrderId")]
+        [JsonIgnore]
         public Order Order { get; set; }
-        
 
+        public Ticket() { }
         public Ticket(int ticketId,  int price, int screeningId, int orderId)
         {
             TicketId = ticketId;

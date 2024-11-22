@@ -14,6 +14,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IScreeningRepository, ScreeningRepository>();
 builder.Services.AddScoped<IHallRepository, HallRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddControllers();
 builder.Services.AddHttpContextAccessor(); // Register IHttpContextAccessor
 
@@ -65,4 +66,5 @@ app.configureUserEndpoint();
 app.configureProfileEndpoint();
 app.configureScreeningEndpoint();
 app.configureHallEndpoints();
+app.configureOrderEndpoints();
 app.Run();
