@@ -126,8 +126,8 @@ namespace MyBackendAPI.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ReleaseYear")
-                        .HasColumnType("integer");
+                    b.Property<DateOnly>("ReleaseDate")
+                        .HasColumnType("date");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -150,7 +150,7 @@ namespace MyBackendAPI.Migrations
                             Duration = 100,
                             Images = new List<string> { "https://www.imdb.com/title/tt0175142/mediaviewer/rm3954579456/?ref_=tt_ov_i", "https://c8.alamy.com/comp/2JHCP0R/scary-movie-film-poster-scary-movie-2000-2JHCP0R.jpg" },
                             Rating = 10,
-                            ReleaseYear = 2001,
+                            ReleaseDate = new DateOnly(2021, 1, 1),
                             Title = "Scary Movie",
                             Trailer = "https://youtu.be/SzpGYrrcJZw"
                         },
@@ -162,7 +162,7 @@ namespace MyBackendAPI.Migrations
                             Duration = 100,
                             Images = new List<string> { "https://i.ebayimg.com/00/s/MTYwMFgxMDY2/z/oZ0AAOSwSj1jJjKs/$_57.JPG?set_id=880000500F", "https://images6.alphacoders.com/111/1115518.jpg" },
                             Rating = 10,
-                            ReleaseYear = 1996,
+                            ReleaseDate = new DateOnly(1996, 1, 1),
                             Title = "Star Wars",
                             Trailer = "https://youtu.be/5UnjrG_N8hU"
                         },
@@ -171,10 +171,10 @@ namespace MyBackendAPI.Migrations
                             MovieId = 3,
                             AgeRating = 16,
                             Director = "Anders Andersen",
-                            Duration = 120,
+                            Duration = 122,
                             Images = new List<string> { "https://i.ebayimg.com/images/g/hX8AAOSwk5FUwoPc/s-l1200.jpg", "https://images7.alphacoders.com/518/518783.jpg" },
                             Rating = 10,
-                            ReleaseYear = 2010,
+                            ReleaseDate = new DateOnly(2016, 1, 1),
                             Title = "Inception",
                             Trailer = "https://youtu.be/LifqWf0BAOA"
                         });
@@ -313,7 +313,7 @@ namespace MyBackendAPI.Migrations
                             About = "3D",
                             HallId = 2,
                             MovieId = 1,
-                            ScreeningTime = new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2701)
+                            ScreeningTime = new DateTime(2024, 11, 22, 9, 27, 46, 198, DateTimeKind.Utc).AddTicks(2458)
                         },
                         new
                         {
@@ -321,7 +321,7 @@ namespace MyBackendAPI.Migrations
                             About = "2D",
                             HallId = 1,
                             MovieId = 1,
-                            ScreeningTime = new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2705)
+                            ScreeningTime = new DateTime(2024, 11, 22, 9, 27, 46, 198, DateTimeKind.Utc).AddTicks(2463)
                         },
                         new
                         {
@@ -329,7 +329,7 @@ namespace MyBackendAPI.Migrations
                             About = "Norsk tale",
                             HallId = 3,
                             MovieId = 1,
-                            ScreeningTime = new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2706)
+                            ScreeningTime = new DateTime(2024, 11, 22, 9, 27, 46, 198, DateTimeKind.Utc).AddTicks(2464)
                         },
                         new
                         {
@@ -337,7 +337,7 @@ namespace MyBackendAPI.Migrations
                             About = "Original tale",
                             HallId = 2,
                             MovieId = 2,
-                            ScreeningTime = new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2707)
+                            ScreeningTime = new DateTime(2024, 11, 22, 9, 27, 46, 198, DateTimeKind.Utc).AddTicks(2465)
                         },
                         new
                         {
@@ -345,7 +345,7 @@ namespace MyBackendAPI.Migrations
                             About = "3D",
                             HallId = 2,
                             MovieId = 3,
-                            ScreeningTime = new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2708)
+                            ScreeningTime = new DateTime(2024, 11, 22, 9, 27, 46, 198, DateTimeKind.Utc).AddTicks(2465)
                         },
                         new
                         {
@@ -353,7 +353,7 @@ namespace MyBackendAPI.Migrations
                             About = "3D",
                             HallId = 4,
                             MovieId = 2,
-                            ScreeningTime = new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2708)
+                            ScreeningTime = new DateTime(2024, 11, 22, 9, 27, 46, 198, DateTimeKind.Utc).AddTicks(2466)
                         },
                         new
                         {
@@ -361,7 +361,7 @@ namespace MyBackendAPI.Migrations
                             About = "3D",
                             HallId = 3,
                             MovieId = 2,
-                            ScreeningTime = new DateTime(2024, 11, 22, 8, 19, 4, 107, DateTimeKind.Utc).AddTicks(2709)
+                            ScreeningTime = new DateTime(2024, 11, 22, 9, 27, 46, 198, DateTimeKind.Utc).AddTicks(2467)
                         });
                 });
 
@@ -416,13 +416,13 @@ namespace MyBackendAPI.Migrations
                         {
                             UserId = 1,
                             Email = "example@gmail.com",
-                            Password = "$2a$11$g3z7sycfCJY1d9rX09ebVegn6gisfb7a/VQMkIKPt/jFXnWrbx.vS"
+                            Password = "$2a$11$F6ioen1Bi.nQzemG.1hotutn95aT8S.g7syl8VyDTmx9uF9I4U7mq"
                         },
                         new
                         {
                             UserId = 2,
                             Email = "email@email.com",
-                            Password = "$2a$11$PaVzZINcd4jynaetRvo3GeTZrVRy4sPlx3A/KhMigxyCTMvCsabhm"
+                            Password = "$2a$11$L1WljVnvDDzhNo8pQSlIveAAPnElws0YkXauFC4wooTcTuRiKzeoe"
                         });
                 });
 

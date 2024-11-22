@@ -51,7 +51,7 @@ namespace api_cinema_challenge.EndPoints
                 movieCreated.Rating = model.Rating;
                 movieCreated.AgeRating = model.Rating;
                 movieCreated.Duration = model.Duration;
-                movieCreated.ReleaseYear = model.ReleaseYear;
+                movieCreated.ReleaseDate = model.ReleaseDate;
                 movieCreated.Director = model.Director;
                 movieCreated.Trailer = model.Trailer;
                 
@@ -95,7 +95,7 @@ namespace api_cinema_challenge.EndPoints
                 movie.Rating = model.Rating;
                 movie.AgeRating = model.Rating;
                 movie.Duration = model.Duration;
-                movie.ReleaseYear = model.ReleaseYear;
+                movie.ReleaseDate = model.ReleaseDate;
                 movie.Director = model.Director;
 
                 var updatedMovie = await repository.UpdateMovie(movie);
