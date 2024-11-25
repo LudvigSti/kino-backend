@@ -43,7 +43,13 @@ namespace MyBackendAPI.Repositories
 
         public async Task<ICollection<Order>> GetOrders()
         {
-            return await _db.Orders.ToListAsync();
+            return await _db.Orders.Include(o => o.Ticket).ToListAsync();
+        }
+
+        public async Task<Order> UpdateOrder(Order order)
+        {
+            await _db.SaveChangesAsync();
+            return order;
         }
     }
 }

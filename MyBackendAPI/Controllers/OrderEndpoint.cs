@@ -14,6 +14,7 @@ namespace MyBackendAPI.Controllers
             group.MapGet("/", GetAllOrders);
             group.MapGet("/getOrdersByUserId/{userId:int}", GetOrdersById);
             group.MapPost("/", CreateOrder);
+            group.MapDelete("/", DeleteOrder);
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -49,14 +50,17 @@ namespace MyBackendAPI.Controllers
                 order.OrderDate = DateTime.UtcNow;
 
                 List<Ticket> TicketList = new List<Ticket>();
+                int total = 0;
                 foreach (CreateTicketDto item in model.Ticket)
                 {
                     Ticket ticket = new Ticket();
                     ticket.Price = item.Price;
+                    total += item.Price;
                     ticket.ScreeningId = item.ScreeningId;
                     TicketList.Add(ticket);
                 }
                 order.Ticket = TicketList;
+                order.Total = total;
 
                 var orderCreated = await orderRepository.CreateOrder(order);
                 return TypedResults.Ok(orderCreated);
@@ -67,6 +71,18 @@ namespace MyBackendAPI.Controllers
             }
 
         }
-        //Delete
+
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public static async Task<IResult> DeleteOrder(IOrderRepository orderRepository, int id)
+        {
+            var orderDeleted = await orderRepository.DeleteOrder(id);
+            if (orderDeleted == null)
+            {
+                return TypedResults.NotFound("Order does not exist");
+            }
+            return TypedResults.Ok(orderDeleted);
+        }
+
     }
 }
