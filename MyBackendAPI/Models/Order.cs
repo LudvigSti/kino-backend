@@ -15,7 +15,7 @@ namespace MyBackendAPI.Models
         public int Total { get; set; }
 
         public ICollection<Ticket> Ticket { get; set; }
-
+        public Order() { }
         public Order(int orderId, int userId, DateTime orderDate, int total)
         {
             OrderId = orderId;
