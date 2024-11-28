@@ -313,7 +313,7 @@ namespace MyBackendAPI.Migrations
                             About = "3D",
                             HallId = 2,
                             MovieId = 1,
-                            ScreeningTime = new DateTime(2024, 11, 22, 9, 56, 15, 919, DateTimeKind.Utc).AddTicks(3495)
+                            ScreeningTime = new DateTime(2024, 11, 25, 11, 7, 50, 576, DateTimeKind.Utc).AddTicks(8612)
                         },
                         new
                         {
@@ -321,7 +321,7 @@ namespace MyBackendAPI.Migrations
                             About = "2D",
                             HallId = 1,
                             MovieId = 1,
-                            ScreeningTime = new DateTime(2024, 11, 22, 9, 56, 15, 919, DateTimeKind.Utc).AddTicks(3499)
+                            ScreeningTime = new DateTime(2024, 11, 25, 11, 7, 50, 576, DateTimeKind.Utc).AddTicks(8617)
                         },
                         new
                         {
@@ -329,7 +329,7 @@ namespace MyBackendAPI.Migrations
                             About = "Norsk tale",
                             HallId = 3,
                             MovieId = 1,
-                            ScreeningTime = new DateTime(2024, 11, 22, 9, 56, 15, 919, DateTimeKind.Utc).AddTicks(3500)
+                            ScreeningTime = new DateTime(2024, 11, 25, 11, 7, 50, 576, DateTimeKind.Utc).AddTicks(8618)
                         },
                         new
                         {
@@ -337,7 +337,7 @@ namespace MyBackendAPI.Migrations
                             About = "Original tale",
                             HallId = 2,
                             MovieId = 2,
-                            ScreeningTime = new DateTime(2024, 11, 22, 9, 56, 15, 919, DateTimeKind.Utc).AddTicks(3501)
+                            ScreeningTime = new DateTime(2024, 11, 25, 11, 7, 50, 576, DateTimeKind.Utc).AddTicks(8619)
                         },
                         new
                         {
@@ -345,7 +345,7 @@ namespace MyBackendAPI.Migrations
                             About = "3D",
                             HallId = 2,
                             MovieId = 3,
-                            ScreeningTime = new DateTime(2024, 11, 22, 9, 56, 15, 919, DateTimeKind.Utc).AddTicks(3502)
+                            ScreeningTime = new DateTime(2024, 11, 25, 11, 7, 50, 576, DateTimeKind.Utc).AddTicks(8620)
                         },
                         new
                         {
@@ -353,7 +353,7 @@ namespace MyBackendAPI.Migrations
                             About = "3D",
                             HallId = 4,
                             MovieId = 2,
-                            ScreeningTime = new DateTime(2024, 11, 22, 9, 56, 15, 919, DateTimeKind.Utc).AddTicks(3502)
+                            ScreeningTime = new DateTime(2024, 11, 25, 11, 7, 50, 576, DateTimeKind.Utc).AddTicks(8621)
                         },
                         new
                         {
@@ -361,7 +361,7 @@ namespace MyBackendAPI.Migrations
                             About = "3D",
                             HallId = 3,
                             MovieId = 2,
-                            ScreeningTime = new DateTime(2024, 11, 22, 9, 56, 15, 919, DateTimeKind.Utc).AddTicks(3503)
+                            ScreeningTime = new DateTime(2024, 11, 25, 11, 7, 50, 576, DateTimeKind.Utc).AddTicks(8622)
                         });
                 });
 
@@ -416,13 +416,13 @@ namespace MyBackendAPI.Migrations
                         {
                             UserId = 1,
                             Email = "example@gmail.com",
-                            Password = "$2a$11$/1wQvuN5l7unQWi6Nkz96uJW2Qhfp5t5Jl7UqcYyusT5qs/mos4eq"
+                            Password = "$2a$11$Jzmi7XA/ow2YIbTV/FH7UORo.WFBTHNoEdwykZMwFYUL0XINb7o9m"
                         },
                         new
                         {
                             UserId = 2,
                             Email = "email@email.com",
-                            Password = "$2a$11$AbmjHNnsqqVppQkZyWok/.9JjsZB2sVYNFyJsmIJG8q/hYohvEi7S"
+                            Password = "$2a$11$m/2V8JjEA3h4cekzw0d7SO1bO4YL32hC6QC0rR6Qp2.WPp6eDVICm"
                         });
                 });
 
