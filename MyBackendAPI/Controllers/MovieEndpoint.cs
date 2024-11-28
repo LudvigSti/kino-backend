@@ -19,6 +19,7 @@ namespace api_cinema_challenge.EndPoints
             group.MapPut("/{id:int}", UpdateMovie);
             group.MapPut("/Image{id:int}", UpdateMovieImage);
             group.MapPut("AddImage{id:int}",AddLandscapeImageToMovie);
+            group.MapPut("Trailer{id:int}", UpdateTrailer);
         }
 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -156,6 +157,34 @@ namespace api_cinema_challenge.EndPoints
             catch (Exception e)
             {
                 return TypedResults.BadRequest(new { Error = "An error occurred while processing your request.", Details = e.Message });
+            }
+
+           
+
+        } 
+            [ProducesResponseType(StatusCodes.Status200OK)]
+            [ProducesResponseType(StatusCodes.Status404NotFound)]
+            [ProducesResponseType(StatusCodes.Status400BadRequest)]
+            public static async Task <IResult> UpdateTrailer(IMovieRepository repository,int id, string trailer)
+        {
+            try
+            {
+                var movie = await repository.GetMovie(id);
+                if (movie == null)
+                {
+                    return TypedResults.BadRequest();
+                }
+
+                movie.Trailer = trailer;
+
+                var updatedMovie = await repository.UpdateMovie(movie);
+                return TypedResults.Ok(updatedMovie);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }
