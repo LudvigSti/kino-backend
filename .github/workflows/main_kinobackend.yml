@@ -55,3 +55,9 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DFA71DFDCD554EF4B9E3F433E54884B4 }}
           package: .
+
+      - name: Set connection string
+        run: az webapp config connection-string set --name KinoBackend --resource-group Kino --settings DefaultConnectionString=Host=ep-icy-snowflake-a2tm5skv.eu-central-1.aws.neon.tech; Database=kino-database; Username=kino-database_owner; Password=pe3d1oMCvKxI; --connection-string-type=PostgreSQL
+
+      - name: Run migrations
+        run: dotnet ef database update --project MyBackendAPI/MyBackendAPI.csproj
